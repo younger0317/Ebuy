@@ -1,4 +1,7 @@
 package com.ebuy.entity;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author linbingyang
@@ -6,7 +9,7 @@ package com.ebuy.entity;
  * 订单详情类
  *
  */
-public class EasybuyOrderDetail {
+public class EasybuyOrderDetail implements Serializable {
 	
 	private int id;				//编号
 	private int orderId;		//订单ID
