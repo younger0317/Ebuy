@@ -26,6 +26,29 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 	}
 	
 	/**
+	 * 用户查找方法(返回所有记录的集合)
+	 */
+	@Override
+	public List<EasybuyUser> getEasybuyUserList(String appendSql,Object...params) {
+		List<EasybuyUser> list=null;
+		StringBuffer sql = new StringBuffer("select * from easybuy_user ");
+		sql.append(appendSql);
+		list = super.executeQuery(sql.toString(), params);
+		return list;
+	}
+	
+	/**
+	 * 添加用户
+	 */
+	@Override
+	public int addEasybuyUser(EasybuyUser user) {
+		String sql ="insert into easybuy_user(loginName,userName,password,email,mobile) values(?,?,?,?,?)";
+		int update = super.executeUpdate(sql, user.getLoginName(),user.getLoginName(),user.getPassword(),user.getEmail(),user.getMobile());
+		return update;
+	}
+	
+	
+	/**
 	 * 获取相应的用户对象
 	 */
 	@Override
