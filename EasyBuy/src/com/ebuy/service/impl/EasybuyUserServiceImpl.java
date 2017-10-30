@@ -73,6 +73,30 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		if(update!=-1 && update>0){
 			flag = true;
 		}
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);
 		return flag;
+	}
+	
+	/**
+	 * 用户登陆
+	 */
+	@Override
+	public EasybuyUser toLogin(String loginName, String password) {
+		EasybuyUser user = null;
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		//创建Dao对象
+		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
+		//业务流程
+		String sql = "where loginName=? and password=?";
+		List<EasybuyUser> userList = userDao.getEasybuyUserList(sql, loginName,password);
+		if(userList!=null && userList.size()>0){
+			user = userList.get(0);
+		}
+		
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);
+		return user;
 	}
 }

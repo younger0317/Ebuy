@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -34,10 +35,12 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		HttpSession session = req.getSession();
 		EasybuyUserService userService = new EasybuyUserServiceImpl();
 		String type = req.getParameter("type");
 		//判断请求类型
 		if(type.equals("regist")){
+			//注册功能
 			//获取请求值
 			String loginName = req.getParameter("loginName");
 			String password = req.getParameter("password");
@@ -63,6 +66,22 @@ public class UserServlet extends HttpServlet {
 					log.error(loginName+"注册失败");
 					resp.sendRedirect("Regist.html");
 				}	
+			}
+		}else if(type.equals("login")){
+			//登陆功能
+			//获取请求值
+			String loginName = req.getParameter("loginName");
+			String password = req.getParameter("password");
+			//是否登陆成功
+			EasybuyUser user = userService.toLogin(loginName, password);
+			
+			if(user != null){
+				log.debug(loginName+"登陆成功");
+				session.setAttribute("user", user);
+				resp.sendRedirect("index.jsp");
+			}else{
+				log.debug("登陆失败");
+				resp.sendRedirect("Login.html");
 			}
 		}
 		

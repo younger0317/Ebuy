@@ -23,4 +23,6 @@ public interface EasybuyUserService {
 	 * @return	添加成功返回true，否则返回false
 	 */
 	public boolean registUser(EasybuyUser user);
+	
+	public EasybuyUser toLogin(String loginName,String password);
 }
