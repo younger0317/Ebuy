@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 
  * @author linbingyang
- * @version 1.0 2017-10-29
+ * @version 1.1 2017-10-30
  * 商品分类实体类
  *
  */
@@ -15,6 +15,7 @@ public class EasybuyProductCategory implements Serializable {
 	private String name;			//分类名字
 	private int parentId;			//父级分类id
 	private int type;				//分类类型  1:一级分类；2：二级分类；3：三级分类
+	private String iconClass;		//？？
 	
 	//各属性get、set方法
 	public int getId() {
@@ -44,7 +45,12 @@ public class EasybuyProductCategory implements Serializable {
 		}
 		this.type = type;
 	}
-	
+	public String getIconClass() {
+		return iconClass;
+	}
+	public void setIconClass(String iconClass) {
+		this.iconClass = iconClass;
+	}
 	//无参构造
 	public EasybuyProductCategory() {
 		super();

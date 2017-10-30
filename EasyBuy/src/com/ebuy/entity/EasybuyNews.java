@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 
  * @author linbingyang
- * @version 1.0 2017-10-29
+ * @version 1.1 2017-10-30
  * 资讯实体类
  *
  */
@@ -13,7 +13,7 @@ public class EasybuyNews implements Serializable {
 	private int id; 				//编号
 	private String title;			//标题
 	private String content;			//内容
-	private Date createTime;		//录入日期
+	private String createTime;		//录入日期
 	
 	//各属性的get、set方法
 	public int getId() {
@@ -34,10 +34,10 @@ public class EasybuyNews implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	
@@ -48,7 +48,7 @@ public class EasybuyNews implements Serializable {
 	}
 	
 	//全参构造
-	public EasybuyNews(int id, String title, String content, Date createTime) {
+	public EasybuyNews(int id, String title, String content, String createTime) {
 		super();
 		this.id = id;
 		this.title = title;

@@ -6,16 +6,16 @@ import java.util.Date;
 /**
  * 
  * @author linbingyang
- * @version 1.0 2017-10-29
+ * @version 1.1 2017-10-30
  * 用户地址实体类
  *
  */
 public class EasybuyUserAddress implements Serializable {
 	
 	private int id;   				//地址id
+	private int userId;				//用户id
 	private String address;			//地址
 	private Date createTime;		//创建时间
-	private int userId;				//用户id
 	private int isDefault;			//是否是默认地址，1是，0否
 	private String remark;			//备注
 	

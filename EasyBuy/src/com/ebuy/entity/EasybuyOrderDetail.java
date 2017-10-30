@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 
  * @author linbingyang
- * @version 1.0 2017-10-29
+ * @version 1.1 2017-10-30
  * 订单详情类
  *
  */
@@ -15,7 +15,7 @@ public class EasybuyOrderDetail implements Serializable {
 	private int orderId;		//订单ID
 	private int productId;		//商品ID
 	private int quantity;		//数量
-	private double cost;		//金额
+	private float cost;			//金额
 	
 	//各属性get、set方法
 	public int getId() {
@@ -42,10 +42,10 @@ public class EasybuyOrderDetail implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public double getCost() {
+	public float getCost() {
 		return cost;
 	}
-	public void setCost(double cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
 	}
 	
@@ -57,7 +57,7 @@ public class EasybuyOrderDetail implements Serializable {
 	
 	//全参构造
 	public EasybuyOrderDetail(int id, int orderId, int productId, int quantity,
-			double cost) {
+			float cost) {
 		super();
 		this.id = id;
 		this.orderId = orderId;

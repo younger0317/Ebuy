@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 
  * @author linbingyang
- * @version 1.0 2017-10-29
+ * @version 1.1 2017-10-30
  * 订单实体类
  *
  */
@@ -16,9 +16,9 @@ public class EasybuyOrder implements Serializable {
 	private String loginName;			//用户登陆名
 	private String userAddress;			//用户地址
 	private Date crateTime;				//创建时间
-	private double cost;				//金额
-	private int status;					//状态，1：待审核；2：通过审核；3：配货；4：已发货；5：已收货
-	private int type;					//类型？
+	private float cost;			    	//金额
+	//private int status;				//状态，1：待审核；2：通过审核；3：配货；4：已发货；5：已收货
+	//private int type;					//类型？
 	private String serialNumber;		//订单号？
 	
 	
@@ -53,23 +53,11 @@ public class EasybuyOrder implements Serializable {
 	public void setCrateTime(Date crateTime) {
 		this.crateTime = crateTime;
 	}
-	public double getCost() {
+	public float getCost() {
 		return cost;
 	}
-	public void setCost(double cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
 	}
 	public String getSerialNumber() {
 		return serialNumber;
@@ -83,10 +71,10 @@ public class EasybuyOrder implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	//全参构造
 	public EasybuyOrder(int id, int userId, String loginName,
-			String userAddress, Date crateTime, double cost, int status,
-			int type, String serialNumber) {
+			String userAddress, Date crateTime, float cost, String serialNumber) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -94,8 +82,6 @@ public class EasybuyOrder implements Serializable {
 		this.userAddress = userAddress;
 		this.crateTime = crateTime;
 		this.cost = cost;
-		this.status = status;
-		this.type = type;
 		this.serialNumber = serialNumber;
 	}
 	
@@ -104,9 +90,9 @@ public class EasybuyOrder implements Serializable {
 	public String toString() {
 		return "EasybuyOrder [id=" + id + ", userId=" + userId + ", loginName="
 				+ loginName + ", userAddress=" + userAddress + ", crateTime="
-				+ crateTime + ", cost=" + cost + ", status=" + status
-				+ ", type=" + type + ", serialNumber=" + serialNumber + "]";
-	}
+				+ crateTime + ", cost=" + cost + ", serialNumber="
+				+ serialNumber + "]";
+	}	
 	
 	
 	
