@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title></title>
 </head>
 <body>  
 <!--Begin Header Begin-->

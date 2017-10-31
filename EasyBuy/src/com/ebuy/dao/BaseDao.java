@@ -10,10 +10,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.ebuy.util.DatabaseUtil;
-
-
-
-
 /**
  * 
  * @author linbingyang
