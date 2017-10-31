@@ -43,16 +43,25 @@ public class UserServlet extends HttpServlet {
 			//注册功能
 			//获取请求值
 			String loginName = req.getParameter("loginName");
+			String userName = req.getParameter("l_mem");
+			Integer sex = Integer.parseInt(req.getParameter("sex"));
 			String password = req.getParameter("password");
 			String email = req.getParameter("email");
 			String mobile = req.getParameter("mobile");
+			String identityCode=req.getParameter("l_num");
+
+			
 			//构建新的EasybuyUser对象
 			EasybuyUser user = new EasybuyUser();
 			//设置user对象的值
 			user.setLoginName(loginName);
+			user.setUserName(userName);
+			user.setSex(sex);
 			user.setPassword(password);
 			user.setEmail(email);
 			user.setMobile(mobile);
+			user.setIdentityCode(identityCode);
+			System.out.println(identityCode);
 			
 			//判断用户名是否存在
 			if(!userService.findUserByLoginName(loginName)){
