@@ -42,8 +42,8 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 	 */
 	@Override
 	public int addEasybuyUser(EasybuyUser user) {
-		String sql ="insert into easybuy_user(loginName,userName,password,email,mobile) values(?,?,?,?,?)";
-		int update = super.executeUpdate(sql, user.getLoginName(),user.getLoginName(),user.getPassword(),user.getEmail(),user.getMobile());
+		String sql ="insert into easybuy_user(loginName,userName,sex,identityCode,password,email,mobile) values(?,?,?,?,?,?,?)";
+		int update = super.executeUpdate(sql, user.getLoginName(),user.getUserName(),user.getSex(),user.getIdentityCode(),user.getPassword(),user.getEmail(),user.getMobile());
 		return update;
 	}
 	

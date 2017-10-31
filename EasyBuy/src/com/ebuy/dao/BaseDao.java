@@ -92,6 +92,7 @@ public abstract class BaseDao<T> {
 				T t = getEntity(rs);
 				list.add(t);
 			}
+			log.debug(">>>>>>成功"+sql);
 			return list;
 		} catch (SQLException e) {
 			log.error(e);
