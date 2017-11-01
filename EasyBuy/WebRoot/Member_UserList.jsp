@@ -8,12 +8,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
-    <!--[if IE 6]>
+    [if IE 6]>
     <script src="js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
-    <![endif]-->
+    <![endif]
     <script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
     <script type="text/javascript" src="js/menu.js"></script>    
         
@@ -37,10 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>尤洪</title>
 </head>
 <body>  
-<!--Begin Header Begin-->
+Begin Header Begin
 <div class="soubg">
 	<div class="sou">
-    	<!--Begin 所在收货地区 Begin-->
+    	Begin 所在收货地区 Begin
     	<span class="s_city_b">
         	<span class="fl">送货至：</span>
             <span class="s_city">
@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </span>
         </span>
-        <!--End 所在收货地区 End-->
+        End 所在收货地区 End
         <span class="fr">
         	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         	<span class="ss">
@@ -176,10 +176,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="i_car">
             <div class="car_t">购物车 [ <span>3</span> ]</div>
             <div class="car_bg">
-                <!--Begin 购物车未登录 Begin-->
+                Begin 购物车未登录 Begin
                 <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-                <!--End 购物车未登录 End-->
-                <!--Begin 购物车已登录 Begin-->
+                End 购物车未登录 End
+                Begin 购物车已登录 Begin
                 <ul class="cars">
                     <li>
                         <div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
@@ -199,14 +199,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
                 <div class="price_a"><a href="#">去购物车结算</a></div>
-                <!--End 购物车已登录 End-->
+                End 购物车已登录 End
             </div>
         </div>
     </div>
 </div>
-<!--End Header End--> 
+End Header End 
 <div class="i_bg bg_color">
-    <!--Begin 用户中心 Begin -->
+    Begin 用户中心 Begin
 	<div class="m_content">
    		<div class="m_left">
         	<div class="left_n">管理中心</div>
@@ -240,11 +240,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
 		<div class="m_right" id="info">
-      	<!--局部刷新部分 -->
+      	局部刷新部分
         </div>
     </div>
-	<!--End 用户中心 End--> 
-    <!--Begin Footer Begin -->
+	End 用户中心 End 
+    Begin Footer Begin
     <div class="b_btm_bg b_btm_c">
         <div class="b_btm">
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
@@ -325,13 +325,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <img src="images/b_1.gif" width="98" height="33" /><img src="images/b_2.gif" width="98" height="33" /><img src="images/b_3.gif" width="98" height="33" /><img src="images/b_4.gif" width="98" height="33" /><img src="images/b_5.gif" width="98" height="33" /><img src="images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
-    <!--End Footer End -->    
+    End Footer End    
 </div>
 
 </body>
 
 
-<!--[if IE 6]>
+
+[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
+<![endif]
 </html>
+

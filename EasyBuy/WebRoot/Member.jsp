@@ -19,7 +19,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
     <script type="text/javascript" src="js/menu.js"></script>    
 	<script type="text/javascript" src="js/select.js"></script>
-        
+    <script type="text/javascript">
+    	jQuery(function($){
+    		$(".m_left li").click(function(){
+    			$(".m_left li a").removeClass("now");
+    			$(this).find("a").addClass("now");
+    		});
+    	});
+    	
+    	function toNewsList(){
+    		location.href="Member_NewsList.jsp";
+    	}
+    </script>  
     
 <title>尤洪</title>
 </head>
@@ -200,29 +211,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="left_m">
             	<div class="left_m_t t_bg1">订单中心</div>
                 <ul>
-                	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="Member_Address.html">全部订单</a></li>
+                	<li><a href="javascript:;">我的订单</a></li>
+                    <li><a href="javascript:;">全部订单</a></li>
                 </ul>
             </div>
             <div class="left_m">
             	<div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                	<li><a href="Member_User.html" class="now">用户信息</a></li>
+                	<li><a href="javascript:;" class="now">用户信息</a></li>
                     <li><a href="Member_UserList.jsp">用户列表</a></li>
                 </ul>
             </div>
             <div class="left_m">
             	<div class="left_m_t t_bg3">账户中心</div>
                 <ul>
-                	<li><a href="Member_Safe.html">分类管理</a></li>
-                    <li><a href="Member_Packet.html">商品管理</a></li>
-                    <li><a href="Member_Money.html">商品上架</a></li>
+                	<li><a href="javascript:;">分类管理</a></li>
+                    <li><a href="javascript:;">商品管理</a></li>
+                    <li><a href="javascript:;">商品上架</a></li>
                 </ul>
             </div>
             <div class="left_m">
             	<div class="left_m_t t_bg4">资讯中心</div>
                 <ul>
-                	<li><a href="Member_Member.html">资讯列表</a></li>
+                	<li><a href="javascript:toNewsList();">资讯列表</a></li>
                 </ul>
             </div>
         </div>
