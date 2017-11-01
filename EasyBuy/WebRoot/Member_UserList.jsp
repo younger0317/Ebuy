@@ -14,19 +14,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
-        
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
     <script type="text/javascript" src="js/menu.js"></script>    
         
 	<script type="text/javascript" src="js/select.js"></script>
     <script type="text/javascript">
-    	$(function(){
-    		$.getJSON("","type=userList",getUserListBack);
-    		
-    		function getUserListBack(data){
-    			
-    		}
-    	})
+   
+    	jQuery(function(){
+    		init();
+    	});
+  
+    	function init(){
+    		var currentNo = 1;
+    		jQuery("#info").load("MemberServlet","type=userList&currentNo="+currentNo);  
+    	}
+    	
+    	function redirect(currentNo){
+    		jQuery("#info").load("MemberServlet","type=userList&currentNo="+currentNo); 
+    	}
     </script>  
     
 <title>尤洪</title>
@@ -209,68 +214,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<div class="left_m_t t_bg1">订单中心</div>
                 <ul>
                 	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="Member_Address.html">收货地址</a></li>
-                    <li><a href="#">缺货登记</a></li>
-                    <li><a href="#">跟踪订单</a></li>
+                    <li><a href="Member_Address.html">全部订单</a></li>
                 </ul>
             </div>
             <div class="left_m">
             	<div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                	<li><a href="Member_User.html" class="now">用户信息</a></li>
-                    <li><a href="Member_Collect.html">我的收藏</a></li>
-                    <li><a href="Member_Msg.html">我的留言</a></li>
-                    <li><a href="Member_Links.html">推广链接</a></li>
-                    <li><a href="#">我的评论</a></li>
-                    <li><a href="Member_UserList.jsp">用户管理</a></li>
+                	<li><a href="Member_User.html">用户信息</a></li>
+                    <li><a href="Member_UserList.jsp" class="now">用户列表</a></li>
                 </ul>
             </div>
             <div class="left_m">
             	<div class="left_m_t t_bg3">账户中心</div>
                 <ul>
-                	<li><a href="Member_Safe.html">账户安全</a></li>
-                    <li><a href="Member_Packet.html">我的红包</a></li>
-                    <li><a href="Member_Money.html">资金管理</a></li>
+                	<li><a href="Member_Safe.html">分类管理</a></li>
+                    <li><a href="Member_Packet.html">商品管理</a></li>
+                    <li><a href="Member_Money.html">商品上架</a></li>
                 </ul>
             </div>
             <div class="left_m">
-            	<div class="left_m_t t_bg4">分销中心</div>
+            	<div class="left_m_t t_bg4">资讯中心</div>
                 <ul>
-                	<li><a href="Member_Member.html">我的会员</a></li>
-                    <li><a href="Member_Results.html">我的业绩</a></li>
-                    <li><a href="Member_Commission.html">我的佣金</a></li>
-                    <li><a href="Member_Cash.html">申请提现</a></li>
+                	<li><a href="Member_Member.html">资讯列表</a></li>
                 </ul>
             </div>
         </div>
-		<div class="m_right">
-        	<p></p>
-            <div class="mem_tit">用户列表</div>
-            <table id="UserList" border="1" cellspacing="0" align="center">
-            	<tr align="center" height="30">
-					<td width="150px">用户名称</td>
-					<td width="150px">真实姓名</td>
-					<td width="150px">性别</td>
-					<td width="150px">类型</td>
-					<td colspan="2" width="200px">操作</td>
-            	</tr>
-            	<tr align="center" height="30">
-					<td width="150px">test</td>
-					<td width="150px">测试</td>
-					<td width="150px">男</td>
-					<td width="150px">用户</td>
-					<td ><a href="">修改</a></td>
-					<td ><a href="">删除</a></td>
-            	</tr>
-            </table>
-            <div align="center" style="font-size: 18px;margin-top: 10px;">
-            	<a href="">首页</a>
-            	<a href="">上一页</a>
-            	<a href="">1</a>
-            	<a href="">2</a>
-            	<a href="">下一页</a>
-            	<a href="">尾页</a>
-            </div>
+		<div class="m_right" id="info">
+      	<!--局部刷新部分 -->
         </div>
     </div>
 	<!--End 用户中心 End--> 

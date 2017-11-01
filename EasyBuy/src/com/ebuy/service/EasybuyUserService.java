@@ -1,6 +1,9 @@
 package com.ebuy.service;
 
+import java.util.List;
+
 import com.ebuy.entity.EasybuyUser;
+import com.ebuy.entity.Page;
 
 /**
  * 
@@ -24,5 +27,25 @@ public interface EasybuyUserService {
 	 */
 	public boolean registUser(EasybuyUser user);
 	
+	/**
+	 * 用户登陆功能 
+	 * @param loginName 用户登陆名
+	 * @param password  用户密码
+	 * @return          登陆成功后返回用户对象
+	 */
 	public EasybuyUser toLogin(String loginName,String password);
+	
+	/**
+	 * 统计用户数量
+	 * @return
+	 */
+	public int countUser();
+	
+	/**
+	 * 获取用户分页
+	 * @param currentNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<EasybuyUser> findPageList(int currentNo,int pageSize);
 }

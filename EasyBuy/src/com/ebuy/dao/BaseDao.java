@@ -104,6 +104,39 @@ public abstract class BaseDao<T> {
 	}
 	
 	/**
+	 * 用于获取统计的查询
+	 * @param sql	sql语句
+	 * @param parms 参数
+	 * @return	统计结果
+	 */
+	public int executeCount(String sql,Object...parms){
+		int count = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			if(parms != null){
+				for (int i = 0; i < parms.length; i++) {
+					ps.setObject(i+1, parms[i]);
+				}				
+			}
+			rs = ps.executeQuery();
+			while(rs.next()){
+				log.debug(">>>>>>成功"+sql);
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DatabaseUtil.closeAll(null, ps, rs);
+		}
+		
+		
+		return count;
+	}
+	
+	/**
 	 * 获取相应的实体对象
 	 * @param rs
 	 * @return
