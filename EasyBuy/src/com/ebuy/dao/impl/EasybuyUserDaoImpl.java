@@ -53,8 +53,8 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 	@Override
 	public int countUser() {
 		String sql = "select count(1) from easybuy_user";
-		int count = super.executeCount(sql);
-		return count;
+		int totalCount =super.executeQueryCount(sql);
+		return totalCount;
 	}
 	
 	

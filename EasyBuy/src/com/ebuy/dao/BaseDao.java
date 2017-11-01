@@ -104,15 +104,15 @@ public abstract class BaseDao<T> {
 	}
 	
 	/**
-	 * 用于获取统计的查询
-	 * @param sql	sql语句
+	 * 查询统计结果
+	 * @param sql 查询语句
 	 * @param parms 参数
 	 * @return	统计结果
 	 */
-	public int executeCount(String sql,Object...parms){
-		int count = 0;
+	public int executeQueryCount(String sql,Object...parms){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		int count = 0;
 		try {
 			ps = conn.prepareStatement(sql);
 			if(parms != null){
@@ -120,9 +120,9 @@ public abstract class BaseDao<T> {
 					ps.setObject(i+1, parms[i]);
 				}				
 			}
+			log.debug(">>>>>>成功"+sql);
 			rs = ps.executeQuery();
 			while(rs.next()){
-				log.debug(">>>>>>成功"+sql);
 				count = rs.getInt(1);
 			}
 		} catch (SQLException e) {
@@ -131,9 +131,8 @@ public abstract class BaseDao<T> {
 		}finally{
 			DatabaseUtil.closeAll(null, ps, rs);
 		}
-		
-		
 		return count;
+		
 	}
 	
 	/**
