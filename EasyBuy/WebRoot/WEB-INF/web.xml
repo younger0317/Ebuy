@@ -6,7 +6,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name></display-name>	
   <welcome-file-list>
-    <welcome-file>Member.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
     <resource-ref>
   	<res-ref-name>jdbc/easybuy</res-ref-name>
