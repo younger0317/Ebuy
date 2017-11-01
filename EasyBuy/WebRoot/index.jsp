@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/tban.js"></script>
     
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
-    <%
+    <% 
     	Object list=request.getAttribute("showlist");
     	if(list==null){
     		response.sendRedirect(path+"/showIndex");
@@ -250,23 +250,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	</div>
                         	
                         	<div class="zj">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                	
-                                    <h2><c:forEach items="${requestScope.tyep2}" var="t2">
-                                    <c:if test="${t1.id==t2.parentId }">${t2.name} /</c:if>
-                                    
-                                    </c:forEach></h2>
-                                    <c:forEach items="${requestScope.tyep3}" var="t3">
-                                    <c:if test="${t1.id==t3.parentId}"><a href="#">${t3.name}</a></c:if>
-                                    |
-                                    </c:forEach> 
-                                </div>                               
+	                            <div class="zj_l">
+	                                <div class="zj_l_c">
+	                                	<c:forEach items="${tyepid1}" var="id1">
+	                                	<c:if test="${t1.id==id1}">
+	                                		<c:forEach items="${requestScope.tyep2}" var="t2">
+	                                		<c:if test="${id1==t2.parentId }"><h2>${t2.name}|</h2>
+	                                			<c:forEach items="${requestScope.tyep3}" var="t3">
+				                                 <c:if test="${t2.id==t3.parentId}"><a href="#">${t3.name}</a></c:if>
+				                                 </c:forEach>
+	                                		</c:if>
+	                                		</c:forEach>   	
+	                                	</c:if>
+	                                	</c:forEach> 
+	                                	
+	                             </div>                               
                             </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
+	                            <div class="zj_r">
+	                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
+	                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+	                            </div>
                         	</div>
 			            </li>
 			          </c:forEach>                 	
