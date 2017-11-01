@@ -18,7 +18,7 @@ public class EasybuyUser implements Serializable {
 	private String identityCode;    //身份证
 	private String email;			//电子邮箱
 	private String mobile;          //手机
-	private int type;				//用户类型 1为后台，0为前台
+	private int type;				//用户类型 1为管理员，0为用户
 	
 	
 	//属性的get、set方法
