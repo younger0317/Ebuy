@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
     	jQuery(function(){
     		jQuery(".m_left li a").removeClass("now");
-    		jQuery("#newsList").addClass("now");
+    		jQuery("#order").addClass("now");
     	});
     </script>  
   	
