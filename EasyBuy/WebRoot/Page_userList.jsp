@@ -16,30 +16,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 	<c:forEach items="${requestScope.userList}" var="user" varStatus="status">
 		<tr align="center" height="30">
-		<td width="150px">${user.loginName }</td>
-		<td width="150px">${user.userName }</td>
-		<c:choose>
-			<c:when test="${user.sex == 0 }">
-				<td width="150px">女</td>
-			</c:when>
-			<c:otherwise>
-				<td width="150px">男</td>
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
-			<c:when test="${user.type == 0 }">
-				<td width="150px">用户</td>
-			</c:when>
-			<c:otherwise>
-				<td width="150px">管理员</td>
-			</c:otherwise>
-		</c:choose>
-		<td><a href="">修改</a>
-		</td>
-		<td><a href="">删除</a>
-		</td>	
+			<td width="150px">${user.loginName }</td>
+			<td width="150px">${user.userName }</td>
+			<c:choose>
+				<c:when test="${user.sex == 0 }">
+					<td width="150px">女</td>
+				</c:when>
+				<c:otherwise>
+					<td width="150px">男</td>
+				</c:otherwise>
+			</c:choose>
+			<c:choose>
+				<c:when test="${user.type == 0 }">
+					<td width="150px">用户</td>
+				</c:when>
+				<c:otherwise>
+					<td width="150px">管理员</td>
+				</c:otherwise>
+			</c:choose>
+			<td><a href="">修改</a>
+			</td>
+			<td><a href="">删除</a>
+			</td>	
+		</tr>
 	</c:forEach>
-	</tr>
 </table>
 <div align="center" style="font-size: 18px;margin-top: 10px;">
 	<a href="javascript:currentNo=1;redirect(currentNo)">首页</a> 
@@ -55,4 +55,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:if>
 	<a href="javascript:currentNo=${requestScope.totalPageCount};redirect(currentNo)">尾页</a>
 </div>
-</div>
+
