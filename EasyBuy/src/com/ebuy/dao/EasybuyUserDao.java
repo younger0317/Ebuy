@@ -27,4 +27,10 @@ public interface EasybuyUserDao {
 	 */
 	public int addEasybuyUser(EasybuyUser user);
 	
+	/**
+	 * 统计记录总数
+	 * @return 统计的条数
+	 */
+	public int countUser();
+	
 }

@@ -103,6 +103,38 @@ public abstract class BaseDao<T> {
 	}
 	
 	/**
+	 * 查询统计结果
+	 * @param sql 查询语句
+	 * @param parms 参数
+	 * @return	统计结果
+	 */
+	public int executeQueryCount(String sql,Object...parms){
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			if(parms != null){
+				for (int i = 0; i < parms.length; i++) {
+					ps.setObject(i+1, parms[i]);
+				}				
+			}
+			log.debug(">>>>>>成功"+sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DatabaseUtil.closeAll(null, ps, rs);
+		}
+		return count;
+		
+	}
+	
+	/**
 	 * 获取相应的实体对象
 	 * @param rs
 	 * @return

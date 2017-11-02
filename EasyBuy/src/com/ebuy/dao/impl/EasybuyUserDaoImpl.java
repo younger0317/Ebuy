@@ -47,6 +47,16 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 		return update;
 	}
 	
+	/**
+	 * 统计总数
+	 */
+	@Override
+	public int countUser() {
+		String sql = "select count(1) from easybuy_user";
+		int totalCount =super.executeQueryCount(sql);
+		return totalCount;
+	}
+	
 	
 	/**
 	 * 获取相应的用户对象

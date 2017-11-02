@@ -22,7 +22,6 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	 */
 	public EasybuyNewsDaoImpl(Connection conn) {
 		super(conn);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -30,8 +29,10 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	 */
 	@Override
 	public int addNews(EasybuyNews news) {
-		// TODO Auto-generated method stub
-		return 0;
+		int update = 0;
+		String sql = "insert into easybuy_news(title,content,createTime) values (?,?,?)";
+		update = super.executeUpdate(sql, news.getTitle(),news.getContent(),news.getCreateTime());
+		return update;
 	}
 	
 	/**
@@ -39,8 +40,10 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	 */
 	@Override
 	public int delNews(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		int update = 0;
+		String sql = "delete from easybuy_news where id = ?";
+		update = super.executeUpdate(sql, id);
+		return update;
 	}
 	
 	/**
@@ -48,8 +51,11 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	 */
 	@Override
 	public int updateNews(String appendSql, Object... params) {
-		// TODO Auto-generated method stub
-		return 0;
+		int update = 0;
+		StringBuffer sql = new StringBuffer("update easybuy_news ");
+		sql.append(appendSql);
+		update = super.executeUpdate(sql.toString(), params);
+		return update;
 	}
 	
 	/**
@@ -57,8 +63,10 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	 */
 	@Override
 	public List<EasybuyNews> getList(String appendSql, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<EasybuyNews> list = null;
+		StringBuffer sql = new StringBuffer("select * from easybuy_news ");
+		list = super.executeQuery(sql.toString(), params);
+		return list;
 	}
 	
 	/**
