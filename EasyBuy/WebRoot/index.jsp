@@ -222,7 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="nav_t">全部商品分类</div>
             <div class="leftNav">
                 <ul>      
-                    <li>
+                   <!--  <li>
                     	<div class="fj">
                         	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
                             <span class="fl">进口食品、生鲜</span>
@@ -231,7 +231,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="zj_l">
                                 <div class="zj_l_c">
                                     <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
+                                    <a href="productShow?id=662">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
                                     <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
                                     <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
                                 </div>                               
@@ -241,7 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                       <c:forEach items="${requestScope.tyep1}" var="t1">
 			           <li>
 			           		<div class="fj">
@@ -257,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                		<c:forEach items="${requestScope.tyep2}" var="t2">
 	                                		<c:if test="${id1==t2.parentId }"><h2>${t2.name}|</h2>
 	                                			<c:forEach items="${requestScope.tyep3}" var="t3">
-				                                 <c:if test="${t2.id==t3.parentId}"><a href="#">${t3.name}</a></c:if>
+				                                 <c:if test="${t2.id==t3.parentId}"><a href="productShow?id=${t3.id}">${t3.name}</a></c:if>
 				                                 </c:forEach>
 	                                		</c:if>
 	                                		</c:forEach>   	
