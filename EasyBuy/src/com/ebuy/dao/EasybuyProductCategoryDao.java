@@ -26,4 +26,26 @@ public interface EasybuyProductCategoryDao {
 	 * 通过parentId查询
 	 */
 	List<EasybuyProductCategory> getParentIdAll(int parentId);
+	/**
+	 * 查询所有的分类
+	 */
+	List<EasybuyProductCategory> getCategotyAll(String appendSql,Object...params);
+	/**
+	 * 增加分类
+	 */
+	int addCategoty(EasybuyProductCategory epc);
+	/**
+	 * 统计记录总数
+	 * @return 统计的条数
+	 */
+	public int countUser();
+	/**
+	 * 删除分类
+	 */
+	int deleteCategoty(EasybuyProductCategory epc);
+	/**
+	 * 通过名字查询分类
+	 */
+	EasybuyProductCategory getCategotyByName(EasybuyProductCategory epc);
+	
 }
