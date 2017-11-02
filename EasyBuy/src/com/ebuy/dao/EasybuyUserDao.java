@@ -33,4 +33,12 @@ public interface EasybuyUserDao {
 	 */
 	public int countUser();
 	
+	/**
+	 * 更新用户信息
+	 * @param appendSql sql拼接语句
+	 * @param params	参数列表
+	 * @return			更新行数
+	 */
+	public int upDateUserInfo(String appendSql,Object...params);
+	
 }

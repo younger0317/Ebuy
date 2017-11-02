@@ -29,6 +29,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	function redirect(currentNo){
     		jQuery("#info").load("MemberServlet","type=userList&currentNo="+currentNo); 
     	}
+    	
+    	//修改跳转
+    	function toModify(id){
+    		jQuery("#info").load("MemberServlet","type=modify&id="+id);
+    	}
+    	
+    	//提交修改
+    	function doModify(){
+    		var id = jQuery("#id").val();
+    		var loginName = jQuery("#loginName").val();
+    		var userName = jQuery("#userName").val();
+    		var identityCode = jQuery("#identityCode").val();
+    		var email = jQuery("#email").val();
+    		var mobile = jQuery("#mobile").val();
+    		var userType = jQuery("#type").val();
+    		//alert(id+" "+loginName+" "+userName+" "+identityCode+" "+email+" "+mobile+" "+type);
+    		
+    		jQuery("#info").load("MemberServlet","type=doModify&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType);
+    	}
     </script>  
     
 <title>尤洪</title>

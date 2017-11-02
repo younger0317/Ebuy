@@ -48,4 +48,18 @@ public interface EasybuyUserService {
 	 * @return
 	 */
 	public Page<EasybuyUser> findPageList(int currentNo,int pageSize);
+	
+	/**
+	 * 用过ID找用户
+	 * @param id 用户ID
+	 * @return	用户对象
+	 */
+	public EasybuyUser findUserById(int id);
+	
+	/**
+	 * 更改用户信息
+	 * @param user 更改后的user对象
+	 * @return	更改成功返回true，更改失败返回false
+	 */
+	public boolean modifyUser(EasybuyUser user);
 }

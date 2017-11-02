@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td width="150px">管理员</td>
 				</c:otherwise>
 			</c:choose>
-			<td><a href="">修改</a>
+			<td><a href="javascript:var id=${user.id };toModify(id)">修改</a>
 			</td>
 			<td><a href="">删除</a>
 			</td>	

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.ebuy.dao.BaseDao;
 import com.ebuy.dao.EasybuyUserDao;
 import com.ebuy.entity.EasybuyUser;
@@ -17,6 +19,8 @@ import com.ebuy.util.DatabaseUtil;
  *
  */
 public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyUserDao {
+	private Logger log = Logger.getLogger(EasybuyUserDaoImpl.class);
+	
 	/**
 	 * 基础父类的构造方法
 	 * @param conn
@@ -55,6 +59,18 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 		String sql = "select count(1) from easybuy_user";
 		int totalCount =super.executeQueryCount(sql);
 		return totalCount;
+	}
+	
+	/**
+	 * 更新用户信息
+	 */
+	@Override
+	public int upDateUserInfo(String appendSql, Object... params) {
+		StringBuffer sql = new StringBuffer("update easybuy_user set ");
+		sql.append(appendSql);
+		int update = super.executeUpdate(sql.toString(), params);
+		log.debug("更新了"+update+"条信息");
+		return update;
 	}
 	
 	

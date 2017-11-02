@@ -147,4 +147,50 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		DatabaseUtil.closeAll(conn, null, null);
 		return page;
 	}
+	
+	/**
+	 * 通过id找对象
+	 */
+	@Override
+	public EasybuyUser findUserById(int id) {
+		EasybuyUser user = null;
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		//创建Dao对象
+		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
+		//业务逻辑
+		String sql = "where id = ?";
+		List<EasybuyUser> list = userDao.getEasybuyUserList(sql, id);
+		if(list != null && list.size()>0){
+			user = list.get(0);
+		}
+		
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);
+		return user;
+	}
+	
+	/**
+	 * 更改用户对象
+	 */
+	@Override
+	public boolean modifyUser(EasybuyUser user) {
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		//创建Dao对象
+		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
+		boolean flag = false;
+		//业务逻辑
+		String sql = "loginName=?,userName=?,identityCode=?,email=?,mobile=?,type=? where id=?";
+		int update = userDao.upDateUserInfo(sql, user.getLoginName(),user.getUserName(),user.getIdentityCode(),user.getEmail(),user.getMobile(),user.getType(),user.getId());
+		
+		if(update>0){
+			flag = true;
+		}else{
+			flag = false;
+		}
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);
+		return flag;
+	}
 }
