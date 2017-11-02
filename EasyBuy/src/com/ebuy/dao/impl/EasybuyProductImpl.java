@@ -22,15 +22,33 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 		super(conn);
 	}
 
-	//重写根据级联id查询产品列表
+	//重写根据级联id,当前页currentNo, 页面容量pageSize查询产品列表
 	public List<EasybuyProduct> getEasybuyProdouctsById(
-			Integer idcategoryLevelId) {
+			Integer categoryLevelId,int currentNo,int pageSize) {
 		List<EasybuyProduct> easybuyProductList=new ArrayList<EasybuyProduct>();
-		String sql="select * from easybuy_product where idcategoryLevel3Id=?";
-		easybuyProductList=super.executeQuery(sql, idcategoryLevelId);
+		String sql="select * from easybuy_product where categoryLevel3Id=? limit ?,?";
+		Object[] params={categoryLevelId,(currentNo-1)*pageSize,pageSize};
+		easybuyProductList=super.executeQuery(sql, params);
 		return easybuyProductList;
 	}
 
+	//获取商品总条数
+		public int getProductCount(Integer categoryLevelId){
+			int count=0;
+			String sql="select count(1) from easybuy_product where categoryLevel3Id=?";
+			Object[] params={categoryLevelId};
+			ResultSet rs=super.resultQuery(sql, params);
+			try {
+				while (rs.next()) {
+					count=rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return count;
+		}
+		
+		
 	//重写获取产品类的方法
 	public EasybuyProduct getEntity(ResultSet rs) {
 		EasybuyProduct easybuyProduct=null;
@@ -56,5 +74,7 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 		return easybuyProduct;
 		
 	}
+
+	
 
 }

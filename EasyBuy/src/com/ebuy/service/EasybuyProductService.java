@@ -13,6 +13,10 @@ import com.ebuy.entity.EasybuyProduct;
 public interface EasybuyProductService {
 	
 	//根据商品分类级别id向数据库查询对应商品信息
-		public List<EasybuyProduct> findEasybuyProdouctsById(Integer idcategoryLevelId);
+		public List<EasybuyProduct> findEasybuyProdouctsById(Integer categoryLevelId,int currentNo,int pageSize);
 
+		//获取商品总条数
+		public int findProductCount(Integer categoryLevelId);
+		
+		
 }
