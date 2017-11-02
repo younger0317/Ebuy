@@ -1,6 +1,7 @@
 package com.ebuy.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -94,7 +95,19 @@ public class UserServlet extends HttpServlet {
 			}
 		}
 		
-		
-		
+		if(type.equals("ajax")){
+			String loginName=req.getParameter("loginName");
+			boolean flag=false;
+			if(userService.findUserByLoginName(loginName)){
+				flag=true;				
+			}else{
+				flag=false;
+			}
+			PrintWriter out= resp.getWriter();
+			resp.setContentType("text/html");
+			out.print(flag);
+			out.flush();
+			out.close();
+		}		
 	}
 }

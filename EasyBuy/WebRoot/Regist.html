@@ -36,6 +36,7 @@
 				前端用户名表单验证
 			  */
 			$("#loginName").blur(function(){
+				var loginName=$(this).val();
 				if(this.validity.valueMissing==true){
 
 				this.setCustomValidity("用户名不能为空！");
@@ -45,6 +46,26 @@
 				}else{
 					this.setCustomValidity("");
 				}
+				
+				
+				$.ajax({
+					"url":"User?type=ajax",
+					"type":"GET",
+					"data":"logName="+loginName,
+					"dataType":"text",
+					"success":callBack,
+					"error":function(){
+						alert("用户名验证出错，请稍后再试或与管理员联系");
+					}
+				});
+				function callBack(data){
+					if(data=="true"){
+						$("#div_loginName").html("用户名已经存在！");		
+					}	
+				};
+				
+				
+				
 			});
 			
 			/*
@@ -103,7 +124,10 @@
 					this.setCustomValidity("");
 				}
 			});
-		})
+			
+		});
+		
+		
 	
 	
 	</script>
@@ -145,6 +169,7 @@
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
                 <td><input type="text" value="" class="l_user" name="loginName" id="loginName" placeholder="大写字母开头的6-10个字母或数字字符" required pattern="[A-Z][a-zA-Z0-9]{5,9}"/></td>
+              	<div id="div_loginName"></div>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
@@ -168,7 +193,7 @@
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>性别 &nbsp;</td>
-                <td><input type="radio" value="1" class="sex" id="sex" name="sex"/>男<input type="radio" value="0" class="sex" id="sex" name="sex"/>女</td>
+                <td><input type="radio" value="1" class="sex" id="sex" name="sex" checked="checked"/>男<input type="radio" value="0" class="sex" id="sex" name="sex"/>女</td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>身份证号码 &nbsp;</td>
