@@ -17,9 +17,9 @@ public class EasybuyOrder implements Serializable {
 	private String userAddress;			//用户地址
 	private Date crateTime;				//创建时间
 	private float cost;			    	//金额
+	private String serialNumber;		//订单号？
 	//private int status;				//状态，1：待审核；2：通过审核；3：配货；4：已发货；5：已收货
 	//private int type;					//类型？
-	private String serialNumber;		//订单号？
 	
 	
 	//各属性get、set方法

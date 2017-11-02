@@ -24,6 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		jQuery(".m_left li a").removeClass("now");
     		jQuery("#order").addClass("now");
     	});
+    	
+    	
+    	function init(){
+    		jQuery("#info").load("MemberOrderServlet"); 	
+    	}
     </script>  
   	
   <body>
@@ -31,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right">
+			<div class="m_right" id="info">
 		        	
 		            
 		    </div>
