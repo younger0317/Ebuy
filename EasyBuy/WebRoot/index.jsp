@@ -222,26 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="nav_t">全部商品分类</div>
             <div class="leftNav">
                 <ul>      
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
-                            <span class="fl">进口食品、生鲜</span>
-                        </div>
-                        <div class="zj">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>                               
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
+                  
                       <c:forEach items="${requestScope.tyep1}" var="t1">
 			           <li>
 			           		<div class="fj">
@@ -262,8 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                		</c:if>
 	                                		</c:forEach>   	
 	                                	</c:if>
-	                                	</c:forEach> 
-	                                	
+	                                	</c:forEach> 	                                	
 	                             </div>                               
                             </div>
 	                            <div class="zj_r">
