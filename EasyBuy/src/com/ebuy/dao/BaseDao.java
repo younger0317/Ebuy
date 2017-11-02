@@ -60,7 +60,6 @@ public abstract class BaseDao<T> {
 			log.debug(">>>>>>进行增删改操作");
 			return ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			DatabaseUtil.closeAll(null, ps, null);
@@ -109,5 +108,33 @@ public abstract class BaseDao<T> {
 	 * @return
 	 */
 	public abstract T getEntity(ResultSet rs);
+	
+	/**
+	 * @author anwensheng
+	 * @version 1.0 2017.11.01
+	 * 查询数据库返回值类型为ResltSet方法
+	 * 
+	 */
+	public ResultSet resultQuery(String sql,Object...params){
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		 try {
+			 
+			ps = conn.prepareStatement(sql);
+			
+			if (params!=null) {
+				for (int i = 0; i < params.length; i++) {
+					ps.setObject(i+1, params[i]);
+				}
+			}
+			
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		 return rs;
+	}
+	
 	
 }
