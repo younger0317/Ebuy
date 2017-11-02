@@ -81,13 +81,13 @@ public class EasybuyProductCategoryServiceImpl implements
 	 * 删除分类
 	 */
 	@Override
-	public int deleteCategoty(EasybuyProductCategory epc) {
-		List<EasybuyProductCategory> list = epcd.getParentIdAll(epc.getId());
+	public int deleteCategoty(int id) {
+		List<EasybuyProductCategory> list = epcd.getParentIdAll(id);
 		if(list!=null && list.size()>0){
 			
 			return 0;
 		}
-			return epcd.deleteCategoty(epc);
+			return epcd.deleteCategoty(id);
 		
 	}
 

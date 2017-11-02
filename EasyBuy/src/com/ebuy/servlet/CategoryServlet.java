@@ -1,6 +1,7 @@
 package com.ebuy.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,9 +28,11 @@ public class CategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
 		//获取请求类型
 		String type = req.getParameter("type");
 		//判断请求类型
+		
 		if(type != null){
 			if(type.equals("Category")){
 				//请求类型为：获取用户列表
@@ -44,6 +47,25 @@ public class CategoryServlet extends HttpServlet {
 				req.setAttribute("totalPageCount", page.getTotalPageCount());
 				req.setAttribute("userList", page.getPageList());
 				req.getRequestDispatcher("Page_Category.jsp").forward(req, resp);
+			}else if(type.equals("delete")){
+				EasybuyProductCategoryService epcs=new EasybuyProductCategoryServiceImpl();
+				String string = req.getParameter("categoryid");
+				int count = epcs.deleteCategoty(Integer.parseInt(string));
+				if(count==0){
+					
+					out.print("<script type='text/javascript'>");
+					out.print("alert('分类下有分类不能删除');");
+					out.print("location.href='Member_Category.jsp';");
+					out.print("</script>");
+					
+				}else{
+					out.print("<script type='text/javascript'>");
+					out.print("alert('删除成功');");
+					out.print("location.href='Member_Category.jsp'");
+					out.print("</script>");
+				}
+				//resp.sendRedirect("Member_Category.jsp");
+				
 			}
 		}
 		

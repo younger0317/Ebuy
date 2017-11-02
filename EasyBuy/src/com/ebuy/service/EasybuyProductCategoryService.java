@@ -31,5 +31,5 @@ public interface EasybuyProductCategoryService {
 	/**
 	 * 删除分类
 	 */
-	int deleteCategoty(EasybuyProductCategory epc);
+	int deleteCategoty(int id);
 }

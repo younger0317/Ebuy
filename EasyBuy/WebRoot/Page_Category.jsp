@@ -4,6 +4,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
+
 <div><a href="#">增加分类</a></div>
 <table id="categoryList" border="1" cellspacing="0" align="center">\
 	<tr align="center" height="30">
@@ -29,19 +31,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td width="150px">三级分类</td>
 				</c:when>
 			</c:choose>
-			<c:choose>
-				<c:when test="${category.parentId ==0}">
-					<td width="150px">无</td>
-				</c:when>	
-				<c:otherwise>
-					<c:forEach items="${requestScope.userList}" var="category1">
-						<c:if test="${category.parentId==category1.id }"><td width="150px">${category1.name }</td></c:if>
-					</c:forEach>
-				</c:otherwise>
-				
+						<c:choose>
+							<c:when test="${category.parentId ==0}">
+								<td width="150px">无</td>
+							</c:when>
 							
-			</c:choose>		
-			<td><a href="">修改</a></td>	
+							<c:when test="${category.parentId!=0}">
+								<c:forEach items="${requestScope.userList}" var="category1">
+									<c:if test="${category1.id eq category.parentId}">
+										<td width="150px">${category1.name}</td>
+									</c:if>				
+								</c:forEach>
+							</c:when>
+								
+										
+						</c:choose>		
+					
+								
+					
+						
+			<td><a href="javascript:categoryid=${category.id};shanccat(categoryid)" id="shanc">删除</a></td>	
 		</tr>
 	</c:forEach>
 </table>

@@ -42,7 +42,7 @@ public interface EasybuyProductCategoryDao {
 	/**
 	 * 删除分类
 	 */
-	int deleteCategoty(EasybuyProductCategory epc);
+	int deleteCategoty(int id);
 	/**
 	 * 通过名字查询分类
 	 */
