@@ -9,6 +9,7 @@ import com.ebuy.dao.BaseDao;
 import com.ebuy.dao.EasybuyProductCategoryDao;
 import com.ebuy.entity.EasybuyProduct;
 import com.ebuy.entity.EasybuyProductCategory;
+import com.ebuy.entity.EasybuyUser;
 
 public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategory> implements
 		EasybuyProductCategoryDao {
@@ -71,10 +72,52 @@ public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategor
 	}
 	@Override
 	public List<EasybuyProductCategory> getParentIdAll(int parentId) {
-		String sql="select * from easybuy_product_category where type=?";
+		String sql="select * from easybuy_product_category where parentId=?";
 		List<EasybuyProductCategory> list = super.executeQuery(sql,parentId);
+		if(list!=null && list.size()>0){
+			
+			return list ;
+		}
+		return null;
+	}
+	//所有分类
+	@Override
+	public List<EasybuyProductCategory> getCategotyAll(String appendSql,Object...params) {
+		List<EasybuyProductCategory> list=null;
+		StringBuffer sql = new StringBuffer("select * from easybuy_product_category ");
+		sql.append(appendSql);
+		list = super.executeQuery(sql.toString(), params);
+		return list;
+	}
+	@Override
+	public int addCategoty(EasybuyProductCategory epc) {
+		String sql="INSERT INTO easybuy_product_category (name,parentId,type) values(?,?,?)";
+		int update = super.executeUpdate(sql, epc.getName(),epc.getParentId(),epc.getType());
 		
-		return list ;
+		return update;
+	}
+	@Override
+	public int countUser() {
+		String sql = "select count(1) from easybuy_product_category";
+		int totalCount =super.executeQueryCount(sql);
+		return totalCount;
+	}
+	@Override
+	public int deleteCategoty(EasybuyProductCategory epc) {
+		String sql = "DELETE FROM easybuy_product_category";
+		int update = super.executeUpdate(sql, epc.getId());
+		return update;
+	}
+	@Override
+	public EasybuyProductCategory getCategotyByName(EasybuyProductCategory epc) {
+		String sql = "select * from easybuy_product_category where name=?"; 
+		List<EasybuyProductCategory> list = super.executeQuery(sql, epc.getName());
+		if(list!=null && list.size()>0){
+			
+			return list.get(0);
+		}
+		
+		return null;
 	}
 
 }

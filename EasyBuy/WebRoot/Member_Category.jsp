@@ -23,7 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	jQuery(function(){
     		jQuery(".m_left li a").removeClass("now");
     		jQuery("#category").addClass("now");
+    		//初次加载分类
+    		showCategory();
     	});
+    	function showCategory(){
+    		var currentNo = 1;
+    		jQuery("#t32").load("CategoryServlet","type=Category&currentNo="+currentNo);
+    	
+    	
+    	}
+    	//跳转功能
+    	function redirect(currentNo){
+    		jQuery("#t32").load("CategoryServlet","type=Category&currentNo="+currentNo); 
+    	}
     </script>  
   	
   <body>
@@ -31,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right">
+			<div class="m_right" id="t32">
 		        	
 		            
 		    </div>

@@ -13,11 +13,9 @@ public class Text {
 	 */
 	public static void main(String[] args) {
 		EasybuyProductCategoryService epcs=new 	EasybuyProductCategoryServiceImpl();
-		List<EasybuyProductCategory> type1IbAll = epcs.findType1IbAll();
-		for (EasybuyProductCategory easybuyProductCategory : type1IbAll) {
-			String name = easybuyProductCategory.getName();
-			System.out.println(name);
-		}
+		EasybuyProductCategory epc = new EasybuyProductCategory(1, "aaa", 0, 1);
+		int i = epcs.deleteCategoty(epc);
+		System.out.println(i);
 	}
 
 }

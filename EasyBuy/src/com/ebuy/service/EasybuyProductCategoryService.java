@@ -5,6 +5,7 @@ import java.util.List;
  * 分类业务接口
  */
 import com.ebuy.entity.EasybuyProductCategory;
+import com.ebuy.entity.Page;
 
 public interface EasybuyProductCategoryService {
 	/**
@@ -19,4 +20,16 @@ public interface EasybuyProductCategoryService {
 	 * 查询所有三级份分类
 	 */
 	List<EasybuyProductCategory> findType3IbAll();
+	/**
+	 * 查询所有的分类
+	 */
+	Page<EasybuyProductCategory> getCategotyAll(int currentNo,int pageSize);
+	/**
+	 * 增加分类
+	 */
+	int addCategoty(EasybuyProductCategory epc);
+	/**
+	 * 删除分类
+	 */
+	int deleteCategoty(EasybuyProductCategory epc);
 }

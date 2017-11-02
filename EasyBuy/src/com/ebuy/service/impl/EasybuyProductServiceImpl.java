@@ -80,6 +80,158 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 		
 		return count;
 	}
+	//产品增加业务实现类
+	public int addProduct(EasybuyProduct easybuyProduct) {
+		conn=DatabaseUtil.getConnection();
+		int count=0;
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			//调用实现类方法
+			count = easybuyProductDao.addProduct(easybuyProduct);
+			//判断商品列表是否为空，若不为空设置事务提交
+			if (count>0) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					//如果列表为空 ，执行事务回滚 
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			DatabaseUtil.closeAll(conn, null, null);
+			
+		}
+		return count;
+	}
+	//产品删除业务实现类
+	public int delProduct(int id) {
+		conn=DatabaseUtil.getConnection();
+		int count=0;
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			//调用实现类方法
+			count = easybuyProductDao.delProduct(id);
+			//判断商品列表是否为空，若不为空设置事务提交
+			if (count>0) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					//如果列表为空 ，执行事务回滚 
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			DatabaseUtil.closeAll(conn, null, null);
+			
+		}
+		return count;
+	}
+	//产品更新修改业务实现类
+	public int updatProduct(EasybuyProduct easybuyProduct) {
+		conn=DatabaseUtil.getConnection();
+		int count=0;
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			//调用实现类方法
+			count = easybuyProductDao.updatProduct(easybuyProduct);
+			//判断商品列表是否为空，若不为空设置事务提交
+			if (count>0) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					//如果列表为空 ，执行事务回滚 
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			DatabaseUtil.closeAll(conn, null, null);
+			
+		}
+		return count;
+	}
+	//产品列表查询业务实现类
+	public List<EasybuyProduct> findProductList(int currentNo,int pageSize) {
+		conn=DatabaseUtil.getConnection();
+		List<EasybuyProduct> productList=null;
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			//调用实现类方法
+			productList = easybuyProductDao.getProductList(currentNo, pageSize);
+			//判断商品列表是否为空，若不为空设置事务提交
+			if (productList!=null&&productList.size()>0) {
+			conn.commit();
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					//如果列表为空 ，执行事务回滚 
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			DatabaseUtil.closeAll(conn, null, null);
+			
+		}
+		return productList;
+	}
+	//产品总数量查询业务实现类
+	public int findProductTotal() {
+		conn=DatabaseUtil.getConnection();
+		int count=0;
+		
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			count = easybuyProductDao.getProductTotal();
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			
+			DatabaseUtil.closeAll(conn, null, null);
+		}
+		
+		return count;
+	}
 	
 
 	
