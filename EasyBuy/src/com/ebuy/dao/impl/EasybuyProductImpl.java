@@ -75,6 +75,62 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 		
 	}
 
+	//增加(上架)商品
+	public int addProduct(EasybuyProduct easybuyProduct) {
+		int count=0;
+		String sql="insert into easybuy_product(name,description,price,stock,categoryLevel1Id,categoryLevel2Id,categoryLevel3Id,fileName) values(?,?,?,?,?,?,?,?)";
+		Object[] params={easybuyProduct.getName(),easybuyProduct.getDescription(),easybuyProduct.getPrice(),
+						easybuyProduct.getStock(),easybuyProduct.getCategoryLevel1Id(),easybuyProduct.getCategoryLevel2Id(),easybuyProduct.getCategoryLevel3Id(),
+						easybuyProduct.getFileName()};
+		count=super.executeUpdate(sql, params);
+		return count;
+	}
+
+	//删除商品
+	public int delProduct(int id) {
+		int count=0;
+		String sql="delete easybuy_product where id=?";
+		Object[] params={id};
+		count=super.executeUpdate(sql, params);
+		return count;
+	}
+
+	//修改商品
+	public int updatProduct(EasybuyProduct easybuyProduct) {
+		int count =0;
+		String sql="update easybuy_product set name=?,description=?,price=?,stock=?,categoryLevel1Id=?,categoryLevel2Id=?,categoryLevel3Id=?,fileName=? where id=? ";
+		Object[] params={easybuyProduct.getName(),easybuyProduct.getDescription(),easybuyProduct.getPrice(),
+				easybuyProduct.getStock(),easybuyProduct.getCategoryLevel1Id(),easybuyProduct.getCategoryLevel2Id(),easybuyProduct.getCategoryLevel3Id(),
+				easybuyProduct.getFileName(),easybuyProduct.getId()};
+		count = super.executeUpdate(sql, params);
+		return count;
+	}
+
+	//商品分页查询
+	public List<EasybuyProduct> getProductList(int currentNo,int pageSize) {
+		List<EasybuyProduct> productList=new ArrayList<EasybuyProduct>();
+		String sql="select * from easybuy_product where 1=1 limit ?,?";
+		Object[] params={currentNo,pageSize};
+		productList=super.executeQuery(sql, params);
+		return productList;
+	}
+
+	//商品分页总数查询
+	public int getProductTotal() {
+		int count=0;
+		String sql="select count(1) from easybuy_product ";
+	
+		ResultSet rs=super.resultQuery(sql, null);
+		try {
+			while (rs.next()) {
+				count=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
 	
 
 }

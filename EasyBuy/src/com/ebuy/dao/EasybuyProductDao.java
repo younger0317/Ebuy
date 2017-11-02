@@ -16,8 +16,16 @@ public interface EasybuyProductDao {
 	//根据商品分类级别向数据库查询对应商品信息
 	public List<EasybuyProduct> getEasybuyProdouctsById(Integer categoryLevelId,int currentNo,int pageSize);
 	
-	//获取商品总条数
+	//根据商品分类id获取商品总条数
 	public int getProductCount(Integer categoryLevelId);
-	
-	
+	//增加(上架)商品
+	public int addProduct(EasybuyProduct easybuyProduct);
+	//删除商品
+	public int delProduct(int id);
+	//修改商品
+	public int updatProduct(EasybuyProduct easybuyProduct);
+	//商品分页查询
+	public List<EasybuyProduct> getProductList(int currentNo,int pageSize);
+	//商品分页总数查询
+	public int getProductTotal();
 }

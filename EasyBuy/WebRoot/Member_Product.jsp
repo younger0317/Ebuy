@@ -23,7 +23,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	jQuery(function(){
     		jQuery(".m_left li a").removeClass("now");
     		jQuery("#Product").addClass("now");
+    		init();
     	});
+    	//Ajax加载
+    	function init(){
+    		var currentNo = 1;
+    		jQuery("#pro").load("product_servlet","type=Product&currentNo="+currentNo);  
+    	}
+    	//跳转功能
+    	function redirect(currentNo){
+    		jQuery("#pro").load("product_servlet","type=Product&currentNo="+currentNo); 
+    	}
     </script>  
     
 <title>尤洪</title>
@@ -33,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right">
+			<div class="m_right" id="pro">
 		        	<!-- AJAX 局部刷新部分 -->
 		        	
 		        	
