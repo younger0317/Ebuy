@@ -9,7 +9,7 @@ import com.ebuy.entity.EasybuyNews;
 import com.ebuy.service.EasybuyNewsService;
 import com.ebuy.util.DatabaseUtil;
 
-public class EasybuyNewsServiceImol implements EasybuyNewsService {
+public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 
 	@Override
 	public List<EasybuyNews> getFiveNews() {

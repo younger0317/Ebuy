@@ -41,10 +41,10 @@ public class MemberServlet extends HttpServlet {
 				//请求类型为：获取用户列表
 				log.debug(">>>>>>>>获取用户列表");
 				//获取请求参数
-				int currentNo = Integer.parseInt(req.getParameter("currentNo"));
+				int currentNo = Integer.parseInt(req.getParameter("currentNo"));   //获取当前页
 				//创建用户业务对象
 				EasybuyUserService userService = new EasybuyUserServiceImpl();
-				//获取所需的用户对象集合
+				//获取当前页所需的用户对象集合
 				Page<EasybuyUser> page = userService.findPageList(currentNo, 10);
 				//存储转发值
 				req.setAttribute("currentNo", page.getCurrentNo());
