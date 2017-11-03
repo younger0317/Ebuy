@@ -98,6 +98,7 @@ public class UserServlet extends HttpServlet {
 		if(type.equals("ajax")){
 			String loginName=req.getParameter("loginName");
 			boolean flag=false;
+			System.out.println(userService.findUserByLoginName(loginName));
 			if(userService.findUserByLoginName(loginName)){
 				flag=true;				
 			}else{

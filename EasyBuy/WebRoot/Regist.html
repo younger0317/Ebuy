@@ -85,6 +85,15 @@
 			/*
 				前端确认密码表单验证
 			  */
+			$("#l_pwd").blur(function(){
+				if($("#l_pwd").val()!=$("#password").val()){
+					this.setCustomValidity("密码不一致！");
+				}
+			});
+			  
+			  
+			  
+			  
 			
 			/*
 				前端邮箱表单验证

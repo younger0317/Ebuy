@@ -23,8 +23,8 @@ public class EasybuyOrderDetailDaoImpl extends BaseDao<EasybuyOrderDetail> imple
 	 */
 	@Override
 	public List<EasybuyOrderDetail> getEasybuyOrderDetailList(Integer orderId) {
-		String sql="select * from easybuy_order where orderId=?";
-		return super.executeQuery(sql,new Object[]{orderId});
+		String sql="select * from easybuy_order_detail where orderId=?";
+		return super.executeQuery(sql,orderId);
 	}
 
 	@Override

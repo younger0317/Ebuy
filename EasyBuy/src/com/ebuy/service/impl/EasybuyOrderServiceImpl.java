@@ -10,16 +10,19 @@ import com.ebuy.service.EasybuyOrderService;
 import com.ebuy.util.DatabaseUtil;
 
 public class EasybuyOrderServiceImpl implements EasybuyOrderService {
-	//获取数据库链接
-	Connection conn = DatabaseUtil.getConnection();
-	/**
-	 * 调用分类dao属性
-	 */
-	EasybuyOrderDao easybuyOrderDao=new EasybuyOrderDaoImpl(conn);
 	@Override
 	public List<EasybuyOrder> findEasybuyOrdersList() {
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		/**
+		 * 调用分类dao属性
+		 */
+		EasybuyOrderDao easybuyOrderDao=new EasybuyOrderDaoImpl(conn);
 		// TODO Auto-generated method stub
-		return easybuyOrderDao.getEasybuyOrdersList();
+		List<EasybuyOrder> easybuyOrdersList = easybuyOrderDao.getEasybuyOrdersList();
+		DatabaseUtil.closeAll(conn, null, null);
+		return easybuyOrdersList;
+		
 	}
 	
 
