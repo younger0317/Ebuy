@@ -45,9 +45,10 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 	 * 添加用户
 	 */
 	@Override
-	public int addEasybuyUser(EasybuyUser user) {
-		String sql ="insert into easybuy_user(loginName,userName,sex,identityCode,password,email,mobile) values(?,?,?,?,?,?,?)";
-		int update = super.executeUpdate(sql, user.getLoginName(),user.getUserName(),user.getSex(),user.getIdentityCode(),user.getPassword(),user.getEmail(),user.getMobile());
+	public int addEasybuyUser(String appendSql,Object...params) {
+		StringBuffer sql = new StringBuffer("insert into easybuy_user");
+		sql.append(appendSql);
+		int update = super.executeUpdate(sql.toString(), params);
 		return update;
 	}
 	
@@ -73,6 +74,9 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 		return update;
 	}
 	
+	/**
+	 * 删除用户
+	 */
 	@Override
 	public int delUserById(int id) {
 		String sql = "delete from easybuy_user where id=?";
@@ -106,5 +110,6 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 		}
 		return user;
 	}
+	
 
 }

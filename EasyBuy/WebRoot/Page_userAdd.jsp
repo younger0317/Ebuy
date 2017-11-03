@@ -18,6 +18,14 @@
 	</tr>
 	<tr>
 		<td align="right" width="200px">
+			登录密码		
+		</td>
+		<td width="300px">
+			<input width="250px" type="password" name="password" id="password" value="">
+		</td>
+	</tr>
+	<tr>
+		<td align="right" width="200px">
 			真实姓名	
 		</td>
 		<td width="300px">
@@ -38,6 +46,15 @@
 		</td>
 		<td width="300px">
 			<input type="text" name="email" id="email" value="">
+		</td>
+	</tr>
+	<tr>
+		<td align="right" width="200px">
+			性别	
+		</td>
+		<td width="300px">
+			<label><input type="radio" name="sex" value="0">女</label>
+			<label><input type="radio" name="sex" value="1">男</label>
 		</td>
 	</tr>
 	<tr>

@@ -7,7 +7,7 @@ import com.ebuy.entity.EasybuyUser;
 /**
  * 
  * @author linbingyang
- * @version 1.1 2017-10-30
+ * @version 1.2 2017-11-3
  * 用户Dao接口
  *
  */
@@ -25,7 +25,7 @@ public interface EasybuyUserDao {
 	 * @param user 用户对象
 	 * @return 更新行数
 	 */
-	public int addEasybuyUser(EasybuyUser user);
+	public int addEasybuyUser(String appendSql,Object...params);
 	
 	/**
 	 * 统计记录总数
@@ -47,5 +47,7 @@ public interface EasybuyUserDao {
 	 * @return	更新行数
 	 */
 	public int delUserById(int id);
+	
+
 	
 }

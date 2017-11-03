@@ -72,7 +72,29 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
 		//业务过程
-		int update = userDao.addEasybuyUser(user);
+		String sql ="(loginName,userName,sex,identityCode,password,email,mobile) values(?,?,?,?,?,?,?)";
+		int update = userDao.addEasybuyUser(sql,user.getLoginName(),user.getUserName(),user.getSex(),user.getIdentityCode(),user.getPassword(),user.getEmail(),user.getMobile());
+		if(update!=-1 && update>0){
+			flag = true;
+		}
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);
+		return flag;
+	}
+	
+	/**
+	 * 添加用户 管理员功能
+	 */
+	@Override
+	public boolean addUser(EasybuyUser user) {
+		boolean flag = false;
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		//创建Dao对象
+		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
+		//业务过程
+		String sql ="(loginName,userName,sex,identityCode,password,email,mobile,type) values(?,?,?,?,?,?,?,?)";
+		int update = userDao.addEasybuyUser(sql,user.getLoginName(),user.getUserName(),user.getSex(),user.getIdentityCode(),user.getPassword(),user.getEmail(),user.getMobile(),user.getType());
 		if(update!=-1 && update>0){
 			flag = true;
 		}
@@ -214,4 +236,5 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		DatabaseUtil.closeAll(conn, null, null);
 		return flag;
 	}
+	
 }
