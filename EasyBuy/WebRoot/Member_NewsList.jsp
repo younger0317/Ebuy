@@ -25,9 +25,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		jQuery("#newsList").addClass("now");
     		init();
     	});
-    	
+    	//初始化加载
     	function init(){
     		jQuery("#info").load("MemberNews","type=newsList&currentNo=1");
+    	}
+    	//分页跳转
+    	function redirect(currentNo){
+    		jQuery("#info").load("MemberNews","type=newsList&currentNo="+currentNo);
+    	}
+    	//详情展示
+    	function toShowInfo(id){
+    		jQuery("#info").load("MemberNews","type=showInfo&id="+id);
     	}
     	
     </script>  

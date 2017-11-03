@@ -65,8 +65,19 @@ public class EasybuyNewsDaoImpl extends BaseDao<EasybuyNews> implements EasybuyN
 	public List<EasybuyNews> getList(String appendSql, Object... params) {
 		List<EasybuyNews> list = null;
 		StringBuffer sql = new StringBuffer("select * from easybuy_news ");
+		sql.append(appendSql);
 		list = super.executeQuery(sql.toString(), params);
 		return list;
+	}
+	
+	/**
+	 * 统计咨询总条目
+	 */
+	@Override
+	public int countNews() {
+		String sql = "select count(1) from easybuy_news";
+		int totalCount =super.executeQueryCount(sql);
+		return totalCount;
 	}
 	
 	/**
