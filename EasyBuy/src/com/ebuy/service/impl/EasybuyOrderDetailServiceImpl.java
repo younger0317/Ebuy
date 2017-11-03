@@ -12,12 +12,6 @@ import java.sql.Connection;
 
 public class EasybuyOrderDetailServiceImpl implements EasybuyOrderDetailService {
 	
-	//获取数据库链接
-	Connection conn = DatabaseUtil.getConnection();
-	/**
-	 * 调用分类dao属性
-	 */
-	EasybuyOrderDetailDao easybuyOrderDetailDao=new EasybuyOrderDetailDaoImpl(conn);
 	/**
 	 * 通过orderId查询所有订单详情信息
 	 * @param orderId
@@ -25,8 +19,16 @@ public class EasybuyOrderDetailServiceImpl implements EasybuyOrderDetailService 
 	 */
 	@Override
 	public List<EasybuyOrderDetail>findEasybuyOrderDetailList(Integer orderId) {
+		//获取数据库链接
+		Connection conn = DatabaseUtil.getConnection();
+		/**
+		 * 调用分类dao属性
+		 */
+		EasybuyOrderDetailDao easybuyOrderDetailDao=new EasybuyOrderDetailDaoImpl(conn);
 		// TODO Auto-generated method stub
-		return easybuyOrderDetailDao.getEasybuyOrderDetailList(orderId);
+		List<EasybuyOrderDetail> easybuyOrderDetailList = easybuyOrderDetailDao.getEasybuyOrderDetailList(orderId);
+		DatabaseUtil.closeAll(conn, null, null);
+		return easybuyOrderDetailList;
 	}
 	
 

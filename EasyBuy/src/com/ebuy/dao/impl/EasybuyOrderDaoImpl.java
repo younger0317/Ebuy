@@ -35,10 +35,10 @@ public class EasybuyOrderDaoImpl extends BaseDao<EasybuyOrder> implements Easybu
 				int userId = rs.getInt("userId");
 				String loginName = rs.getString("loginName");
 				String userAddress = rs.getString("userAddress");
-				Date crateTime=rs.getDate("crateTime");
+				Date createTime=rs.getDate("createTime");
 				float cost = rs.getFloat("cost");
 				String serialNumber = rs.getString("serialNumber");
-				easybuyOrder=new EasybuyOrder(id, userId, loginName, userAddress, crateTime, cost, serialNumber);
+				easybuyOrder=new EasybuyOrder(id, userId, loginName, userAddress, createTime, cost, serialNumber);
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
