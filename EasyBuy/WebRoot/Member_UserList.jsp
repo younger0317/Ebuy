@@ -29,6 +29,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	function redirect(currentNo){
     		jQuery("#info").load("MemberServlet","type=userList&currentNo="+currentNo); 
     	}
+    	
+    	//修改跳转
+    	function toModify(id){
+    		jQuery("#info").load("MemberServlet","type=modify&id="+id);
+    	}
+    	
+    	//提交修改
+    	function doModify(){
+    		var id = jQuery("#id").val();
+    		var loginName = jQuery("#loginName").val();
+    		var userName = jQuery("#userName").val();
+    		var identityCode = jQuery("#identityCode").val();
+    		var email = jQuery("#email").val();
+    		var mobile = jQuery("#mobile").val();
+    		var userType = jQuery("#type").val();
+    		//alert(id+" "+loginName+" "+userName+" "+identityCode+" "+email+" "+mobile+" "+type);
+    		
+    		jQuery("#info").load("MemberServlet","type=doModify&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType);
+    	}
+    	
+    	//删除提交
+    	function toDel(id){
+    		jQuery.get("MemberServlet","type=del&id="+id,delBack);
+    		//回调函数
+    		function delBack(data){
+    			if(data=="true"){
+    				alert("删除成功");
+    			}else{
+    				alert("删除失败");
+    			}
+    			init();
+    		}
+    	}
+    	
+    	//添加跳转
+    	function toAddPage(){
+    		jQuery("#info").load("MemberServlet","type=add");
+    	}
+    	
+    	//添加提交
+    	function doAdd(){
+    		var id = jQuery("#id").val();
+    		var loginName = jQuery("#loginName").val();
+    		var userName = jQuery("#userName").val();
+    		var identityCode = jQuery("#identityCode").val();
+    		var email = jQuery("#email").val();
+    		var mobile = jQuery("#mobile").val();
+    		var userType = jQuery("#type").val();
+    		
+    		jQuery("#info").load("MemberServlet","type=doAdd&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType);
+    	}
     </script>  
     
 <title>尤洪</title>

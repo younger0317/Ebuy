@@ -103,9 +103,9 @@ public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategor
 		return totalCount;
 	}
 	@Override
-	public int deleteCategoty(EasybuyProductCategory epc) {
-		String sql = "DELETE FROM easybuy_product_category";
-		int update = super.executeUpdate(sql, epc.getId());
+	public int deleteCategoty(int id) {
+		String sql = "DELETE FROM easybuy_product_category where id=?";
+		int update = super.executeUpdate(sql, id);
 		return update;
 	}
 	@Override
@@ -129,6 +129,11 @@ public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategor
 		Object[] params={name};
 		 count = super.executeQueryCount(sql, params);
 		return count;
+	}
+	@Override
+	public List<EasybuyProductCategory> getAll() {
+		String sql="select * from easybuy_product_category";
+		return super.executeQuery(sql);
 	}
 
 }

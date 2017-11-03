@@ -39,5 +39,9 @@ public class MemberOrderServlet extends HttpServlet{
 			List<EasybuyOrderDetail> eodList = eods.findEasybuyOrderDetailList(id);
 			map.put(id.toString(),eodList);
 		}
+		req.setAttribute("eoList", eoList);
+		req.setAttribute("map", map);
+		req.setCharacterEncoding("utf-8");
+		req.getRequestDispatcher("Member_Order_List.jsp").forward(req, resp);
 	}
 }

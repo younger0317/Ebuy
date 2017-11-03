@@ -1,4 +1,7 @@
+<%@page import="com.ebuy.entity.EasybuyOrderDetail"%>
+<%@page import="com.ebuy.entity.EasybuyOrder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,22 +26,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	jQuery(function(){
     		jQuery(".m_left li a").removeClass("now");
     		jQuery("#order").addClass("now");
+    		init();
     	});
     	
     	
     	function init(){
     		jQuery("#info").load("MemberOrderServlet"); 	
     	}
-    </script>  
-  	
-  <body>
-    <jsp:include page="memberTemp/Member_Top.jsp"></jsp:include>
+    </script>
+  <body>&nbsp;&nbsp; 
+     <jsp:include page="memberTemp/Member_Top.jsp"></jsp:include>
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
 			<div class="m_right" id="info">
-		        	
-		            
+		    			            
 		    </div>
 	    </div>
 		<jsp:include page="memberTemp/Member_Footer.jsp"></jsp:include>

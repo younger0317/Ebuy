@@ -1,6 +1,7 @@
-package com.ebuy.dao;
+﻿package com.ebuy.dao;
 
 import java.util.List;
+
 
 import com.ebuy.entity.EasybuyProductCategory;
 
@@ -10,6 +11,7 @@ import com.ebuy.entity.EasybuyProductCategory;
  *
  */
 public interface EasybuyProductCategoryDao {
+	
 	/**
 	 * 查询所有一级份分类
 	 */
@@ -42,15 +44,23 @@ public interface EasybuyProductCategoryDao {
 	/**
 	 * 删除分类
 	 */
-	int deleteCategoty(EasybuyProductCategory epc);
+	int deleteCategoty(int id);
 	/**
 	 * 通过名字查询分类
 	 */
 	EasybuyProductCategory getCategotyByName(EasybuyProductCategory epc);
+	
+	
 	/**
 	 * @author anwensheng
 	 * @version 1.0 2017 11 02
 	 * 通过名字查询id
 	 */
 	public int getIdByName(String name);
+    /*
+	 * 查询所有分类
+	 * 
+	 */
+	List<EasybuyProductCategory> getAll();
+
 }

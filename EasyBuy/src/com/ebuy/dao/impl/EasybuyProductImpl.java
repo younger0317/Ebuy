@@ -130,7 +130,21 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 		}
 		return count;
 	}
-
+	//根据商品id查询商品信息
+	public EasybuyProduct getProductById(int id){
+		EasybuyProduct ebp=new EasybuyProduct();
+		String sql="select * from easybuy_product where id=?";
+		Object[] params={id};
+		List<EasybuyProduct> productList = super.executeQuery(sql, params);
+		if (productList!=null&productList.size()>0) {
+			ebp=productList.get(0);
+		}
+		
+		return ebp;
+		
+				
+				
+}
 	
 
 }

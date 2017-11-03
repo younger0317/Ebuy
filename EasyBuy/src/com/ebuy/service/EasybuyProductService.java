@@ -27,4 +27,8 @@ public interface EasybuyProductService {
 		public List<EasybuyProduct> findProductList(int currentNo,int pageSize);
 		//商品分页总数查询
 		public int findProductTotal();
+		//根据商品id查询商品信息
+		public EasybuyProduct findProductById(int id);
+		
+	
 }
