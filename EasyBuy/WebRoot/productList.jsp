@@ -36,7 +36,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/tban.js"></script>
     
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
+    <script type="text/javascript">
+    	//初始化购物车
+    	function init(id){
+    	
+    	jQuery("#cars").load("CarsServlet","id="+id);
+    	
+    	}
     
+    </script>
     
 <title>尤洪</title>
 </head>
@@ -183,8 +191,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
+            <ul class="cars" id="cars">
+            	<!-- <li>
                 	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
                     <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
                     <div class="price"><font color="#ff4e00">￥399</font> X1</div>
@@ -198,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
                     <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
                     <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
+                </li> -->
             </ul>
             <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
             <div class="price_a"><a href="#">去购物车结算</a></div>
@@ -222,6 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>商品名称</td>
 			<td>商品价格</td>
 			<td>商品图片名</td>
+			<td>商品操作</td>
 		</tr>
 		<c:forEach items="${requestScope.productShow }" var="prd">
 			<%-- <div>
@@ -235,6 +244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${prd.name }</td>
 				<td>${prd.price }</td>
 				<td>${prd.fileName }</td>
+				<td><a href="javascript:var id=${prd.id};init(id)">加入购物车</a></td>
 			</tr>
 
 		</c:forEach>

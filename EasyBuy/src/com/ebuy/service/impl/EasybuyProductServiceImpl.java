@@ -233,6 +233,38 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 		return count;
 	}
 	
+	
+	//根据商品id查询商品信息
+	public EasybuyProduct findProductById(int id) {
+		conn=DatabaseUtil.getConnection();
+		EasybuyProduct ebp=new EasybuyProduct();
+		try {
+			//关闭自动提交事物
+			conn.setAutoCommit(false);
+			//创建业务层商品类对象
+			EasybuyProductDao easybuyProductDao=new EasybuyProductImpl(conn);
+			ebp = easybuyProductDao.getProductById(id);
+			if (ebp!=null) {
+				
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if (conn!=null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}finally{
+			
+			DatabaseUtil.closeAll(conn, null, null);
+		}
+		
+		return ebp;
+	}
+	
 
 	
 }

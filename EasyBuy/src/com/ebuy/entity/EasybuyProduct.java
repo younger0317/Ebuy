@@ -20,8 +20,16 @@ public class EasybuyProduct implements Serializable{
 	private int categoryLevel3Id;			//所属三级分类ID
 	private String fileName;			//上传的文件名字
 	private int isDelete;				//是否删除，1为删除，0为未删除
+	private int num;                   //放入购物车的数量
 	
 	//各属性的get、set方法
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -28,4 +28,6 @@ public interface EasybuyProductDao {
 	public List<EasybuyProduct> getProductList(int currentNo,int pageSize);
 	//商品分页总数查询
 	public int getProductTotal();
+	//根据商品id查询商品信息
+	public EasybuyProduct getProductById(int id);
 }
