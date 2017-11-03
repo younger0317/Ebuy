@@ -28,6 +28,13 @@ public interface EasybuyUserService {
 	public boolean registUser(EasybuyUser user);
 	
 	/**
+	 * 添加用户【管理员用】
+	 * @param user 用户实例
+	 * @return	添加成功返回true，否则返回false
+	 */
+	public boolean addUser(EasybuyUser user);
+	
+	/**
 	 * 用户登陆功能 
 	 * @param loginName 用户登陆名
 	 * @param password  用户密码
@@ -69,4 +76,5 @@ public interface EasybuyUserService {
 	 * @return	成功删除返回true，否则返回false
 	 */
 	public boolean delUserById(int id);
+	
 }

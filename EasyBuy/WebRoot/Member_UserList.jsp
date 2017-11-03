@@ -77,8 +77,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		var email = jQuery("#email").val();
     		var mobile = jQuery("#mobile").val();
     		var userType = jQuery("#type").val();
+    		var sex=jQuery(":radio[checked='checked']").val();
+    		var password=jQuery("#password").val();
+    	
     		
-    		jQuery("#info").load("MemberServlet","type=doAdd&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType);
+    		jQuery.post("MemberServlet","type=doAdd&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType+"&sex="+sex+"&password="+password,addBack);
+    		function addBack(data){
+    			if(data == "true"){
+    				alert("添加成功");
+    				init();
+    			}else{
+    				alert("添加失败");
+    			}
+    		} 
+    		//jQuery("#info").load("MemberServlet","type=doAdd&id="+id+"&loginName="+loginName+"&userName="+userName+"&identityCode="+identityCode+"&email="+email+"&mobile="+mobile+"&userType="+userType);
     	}
     </script>  
     

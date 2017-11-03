@@ -23,7 +23,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	jQuery(function(){
     		jQuery(".m_left li a").removeClass("now");
     		jQuery("#newsList").addClass("now");
+    		init();
     	});
+    	//初始化加载
+    	function init(){
+    		jQuery("#info").load("MemberNews","type=newsList&currentNo=1");
+    	}
+    	//分页跳转
+    	function redirect(currentNo){
+    		jQuery("#info").load("MemberNews","type=newsList&currentNo="+currentNo);
+    	}
+    	//详情展示
+    	function toShowInfo(id){
+    		jQuery("#info").load("MemberNews","type=showInfo&id="+id);
+    	}
+    	
     </script>  
   	
   <body>
@@ -31,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right">
+			<div class="m_right" id="info">
 		        	
 		            
 		    </div>

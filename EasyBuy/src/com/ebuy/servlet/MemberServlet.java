@@ -41,10 +41,10 @@ public class MemberServlet extends HttpServlet {
 				//请求类型为：获取用户列表
 				log.debug(">>>>>>>>获取用户列表");
 				//获取请求参数
-				int currentNo = Integer.parseInt(req.getParameter("currentNo"));
+				int currentNo = Integer.parseInt(req.getParameter("currentNo"));   //获取当前页
 				//创建用户业务对象
 				EasybuyUserService userService = new EasybuyUserServiceImpl();
-				//获取所需的用户对象集合
+				//获取当前页所需的用户对象集合
 				Page<EasybuyUser> page = userService.findPageList(currentNo, 10);
 				//存储转发值
 				req.setAttribute("currentNo", page.getCurrentNo());
@@ -155,13 +155,37 @@ public class MemberServlet extends HttpServlet {
 				String email = req.getParameter("email");
 				String mobile = req.getParameter("mobile");
 				int userType = Integer.parseInt(req.getParameter("userType"));
+				int sex = Integer.parseInt(req.getParameter("sex"));
+				String password = req.getParameter("password");
 				//创建用户业务对象
 				EasybuyUserService userService = new EasybuyUserServiceImpl();
+				
+				//创建新的用户对象，用于存储修改的用户信息
+				EasybuyUser user = new EasybuyUser();
+				//存储user的值
+				user.setLoginName(loginName);
+				user.setUserName(userName);
+				user.setIdentityCode(identityCode);
+				user.setEmail(email);
+				user.setMobile(mobile);
+				user.setType(userType);
+				user.setSex(sex);
+				user.setPassword(password);
+				
+				
 				//添加操作
+				boolean add = userService.addUser(user);
+				if(add){
+					log.debug(">>>>>>>>>>添加成功");
+					out.print("true");
+				}else{
+					log.debug(">>>>>>>>>>添加失败");
+					out.print("false");
+				}
 				
-				
-				
-				
+				out.flush();
+				out.close();
+
 			}
 		}
 		

@@ -41,4 +41,10 @@ public interface EasybuyNewsDao {
 	 * @return          新闻集合
 	 */
 	public List<EasybuyNews> getList(String appendSql,Object...params);
+	
+	/**
+	 * 统计记录总数
+	 * @return 统计的条数
+	 */
+	public int countNews();
 }
