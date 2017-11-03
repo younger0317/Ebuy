@@ -102,11 +102,7 @@ public class MemberServlet extends HttpServlet {
 					log.debug("更新失败");
 					EasybuyUser user2 = userService.findUserById(id);
 					req.getRequestDispatcher("Page_userModify.jsp").forward(req, resp);
-				}
-				
-								
-				
-				
+				}	
 			}else if(type.equals("checkName")){
 				//请求类型：用户名是否存在请求
 				log.debug(">>>>>>>>用户名是否存在请求");
@@ -125,6 +121,47 @@ public class MemberServlet extends HttpServlet {
 					log.debug(">>>>>>>>用户登陆名不存在");
 					out.print("false");
 				}
+				out.flush();
+				out.close();
+			}else if(type.equals("del")){
+				//请求类型：删除用户
+				log.debug(">>>>>>>>删除用户");
+				//获取请求参数
+				int id = Integer.parseInt(req.getParameter("id"));
+				//创建用户业务对象
+				EasybuyUserService userService = new EasybuyUserServiceImpl();
+				//删除操作
+				boolean del = userService.delUserById(id);
+				if(del){
+					out.print("true");
+				}else{
+					out.print("false");
+				}
+				out.flush();
+				out.close();
+			}else if(type.equals("add")){
+				//请求类型：添加页面跳转
+				log.debug(">>>>>>>>页面跳转");
+				//页面跳转
+				req.getRequestDispatcher("Page_userAdd.jsp").forward(req, resp);
+				
+			}else if(type.equals("doAdd")){
+				//请求类型：添加用户
+				log.debug(">>>>>>>>添加用户");
+				//获取请求参数
+				String loginName = req.getParameter("loginName");
+				String userName = req.getParameter("userName");
+				String identityCode = req.getParameter("identityCode");
+				String email = req.getParameter("email");
+				String mobile = req.getParameter("mobile");
+				int userType = Integer.parseInt(req.getParameter("userType"));
+				//创建用户业务对象
+				EasybuyUserService userService = new EasybuyUserServiceImpl();
+				//添加操作
+				
+				
+				
+				
 			}
 		}
 		

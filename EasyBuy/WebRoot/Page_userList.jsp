@@ -6,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <p></p>
 <div class="mem_tit">用户列表</div>
+<input type="button" value="添加用户" onclick="toAddPage()"/>
 <table id="UserList" border="1" cellspacing="0" align="center">
 	<tr align="center" height="30">
 		<td width="150px">用户名称</td>
@@ -36,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:choose>
 			<td><a href="javascript:var id=${user.id };toModify(id)">修改</a>
 			</td>
-			<td><a href="">删除</a>
+			<td><a href="javascript:var id=${user.id };toDel(id)">删除</a>
 			</td>	
 		</tr>
 	</c:forEach>

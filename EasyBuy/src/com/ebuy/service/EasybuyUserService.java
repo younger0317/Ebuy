@@ -62,4 +62,11 @@ public interface EasybuyUserService {
 	 * @return	更改成功返回true，更改失败返回false
 	 */
 	public boolean modifyUser(EasybuyUser user);
+	
+	/**
+	 * 通过id删除用户
+	 * @param id 用户id
+	 * @return	成功删除返回true，否则返回false
+	 */
+	public boolean delUserById(int id);
 }

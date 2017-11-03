@@ -41,4 +41,11 @@ public interface EasybuyUserDao {
 	 */
 	public int upDateUserInfo(String appendSql,Object...params);
 	
+	/**
+	 * 删除用户
+	 * @param id 用户id
+	 * @return	更新行数
+	 */
+	public int delUserById(int id);
+	
 }

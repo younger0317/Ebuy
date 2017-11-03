@@ -73,6 +73,13 @@ public class EasybuyUserDaoImpl extends BaseDao<EasybuyUser> implements EasybuyU
 		return update;
 	}
 	
+	@Override
+	public int delUserById(int id) {
+		String sql = "delete from easybuy_user where id=?";
+		int update = super.executeUpdate(sql, id);
+		return update;
+	}
+	
 	
 	/**
 	 * 获取相应的用户对象
