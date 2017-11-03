@@ -58,7 +58,7 @@ public class EasybuyProductCategoryServiceImpl implements
 		page.setTotalPageCount(totalCount%pageSize == 0 ? totalCount/pageSize : totalCount/pageSize+1 );
 		page.setPageList(pageList);
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		
 		return page;
 	}
 	/**
@@ -68,12 +68,18 @@ public class EasybuyProductCategoryServiceImpl implements
 	public int addCategoty(EasybuyProductCategory epc) {
 		EasybuyProductCategory category = epcd.getCategotyByName(epc);
 		String name = epc.getName();
-		String name2 = category.getName();
-		if(name.equals(name2)){
-			return 0;
-		}else {
-			return epcd.addCategoty(epc);
+		if(category!=null){
+			
+			String name2 = category.getName();
+			if(name2!=null){			
+				if(name.equals(name2)){
+					return 0;
+				}else {
+					return epcd.addCategoty(epc);
+				}
+			}
 		}
+		return epcd.addCategoty(epc);
 		
 	
 	}
@@ -89,6 +95,12 @@ public class EasybuyProductCategoryServiceImpl implements
 		}
 			return epcd.deleteCategoty(id);
 		
+	}
+
+	@Override
+	public List<EasybuyProductCategory> findAll() {
+		
+		return epcd.getAll();
 	}
 
 }

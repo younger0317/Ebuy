@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 
-<div><a href="#">增加分类</a></div>
+<div><a href="javascript:addcaregory();">增加分类</a></div>
 <table id="categoryList" border="1" cellspacing="0" align="center">\
 	<tr align="center" height="30">
 		<td width="20px">选择</td>
@@ -37,11 +37,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</c:when>
 							
 							<c:when test="${category.parentId!=0}">
-								<c:forEach items="${requestScope.userList}" var="category1">
+								<td width="150px"><c:forEach items="${requestScope.CategoryList}" var="category1">
 									<c:if test="${category1.id eq category.parentId}">
-										<td width="150px">${category1.name}</td>
-									</c:if>				
-								</c:forEach>
+										${category1.name}
+									</c:if>			
+								</c:forEach></td>	
 							</c:when>
 								
 										

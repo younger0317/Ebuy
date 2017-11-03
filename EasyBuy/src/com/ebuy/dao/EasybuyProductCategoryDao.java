@@ -47,5 +47,9 @@ public interface EasybuyProductCategoryDao {
 	 * 通过名字查询分类
 	 */
 	EasybuyProductCategory getCategotyByName(EasybuyProductCategory epc);
-	
+	/**
+	 * 查询所有分类
+	 * 
+	 */
+	List<EasybuyProductCategory> getAll();
 }

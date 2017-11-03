@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		jQuery("#category").addClass("now");
     		//初次加载分类
     		showCategory();
-    	
+    		
     	});
     	function showCategory(){
     		var currentNo = 1;
@@ -33,10 +33,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	
     	}
+    	//删除跳转
     	function shanccat(categoryid){
     		
     				
     			location.href="CategoryServlet?type=delete&categoryid="+categoryid;		
+    		
+  		}
+  		//增加跳转
+    	function addcaregory(){
+    		
+    				
+    			jQuery("#t32").load("CategoryServlet","type=addd");		
     		
   		}
     	

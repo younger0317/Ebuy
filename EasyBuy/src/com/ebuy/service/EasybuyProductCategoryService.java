@@ -21,7 +21,7 @@ public interface EasybuyProductCategoryService {
 	 */
 	List<EasybuyProductCategory> findType3IbAll();
 	/**
-	 * 查询所有的分类
+	 * 查询分页所有的分类
 	 */
 	Page<EasybuyProductCategory> getCategotyAll(int currentNo,int pageSize);
 	/**
@@ -32,4 +32,9 @@ public interface EasybuyProductCategoryService {
 	 * 删除分类
 	 */
 	int deleteCategoty(int id);
+	/**
+	 * 查询所有分类
+	 * 
+	 */
+	List<EasybuyProductCategory> findAll();
 }

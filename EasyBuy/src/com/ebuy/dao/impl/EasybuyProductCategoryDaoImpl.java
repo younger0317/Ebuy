@@ -119,5 +119,10 @@ public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategor
 		
 		return null;
 	}
+	@Override
+	public List<EasybuyProductCategory> getAll() {
+		String sql="select * from easybuy_product_category";
+		return super.executeQuery(sql);
+	}
 
 }
