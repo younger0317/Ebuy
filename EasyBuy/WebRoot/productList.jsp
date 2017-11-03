@@ -217,10 +217,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	if(productList!=null&&productList.size()>0){
 	%>
 	<div>
-	<table style="font-size: 16px ">
-		<tr style="font-weight: bold;">
+	<table style="font-size: 16px;"  border="1" cellspacing="0" align="center">
+		<tr style="font-weight: bold;"  align="center">
 			<td>商品名称</td>
 			<td>商品价格</td>
+			<td>商品库存</td>
 			<td>商品图片名</td>
 		</tr>
 		<c:forEach items="${requestScope.productShow }" var="prd">
@@ -234,6 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<td>${prd.name }</td>
 				<td>${prd.price }</td>
+				<td>${prd.stock }</td>
 				<td>${prd.fileName }</td>
 			</tr>
 

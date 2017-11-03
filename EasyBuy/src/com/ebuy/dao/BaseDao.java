@@ -125,7 +125,6 @@ public abstract class BaseDao<T> {
 				count = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			DatabaseUtil.closeAll(null, ps, rs);

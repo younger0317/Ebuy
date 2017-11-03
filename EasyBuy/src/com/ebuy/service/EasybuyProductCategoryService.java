@@ -1,6 +1,7 @@
 package com.ebuy.service;
 
 import java.util.List;
+
 /**
  * 分类业务接口
  */
@@ -32,4 +33,10 @@ public interface EasybuyProductCategoryService {
 	 * 删除分类
 	 */
 	int deleteCategoty(EasybuyProductCategory epc);
+	/**
+	 * @author anwensheng
+	 * @version 1.0 2017 11 02
+	 * 通过名字查询id
+	 */
+	public int findIdByName(String name);
 }

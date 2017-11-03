@@ -4,10 +4,10 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
     <!--[if IE 6]>
     <script src="js/iepng.js" type="text/javascript"></script>
@@ -15,53 +15,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
-        
+        <%
+        int id=Integer.parseInt(request.getParameter("id"));
+        %>
     <script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
     <script type="text/javascript" src="js/menu.js"></script>    
 	<script type="text/javascript" src="js/select.js"></script>
-   <%
-  String flag=(String)request.getAttribute("flag");
-   if(flag!=null){
-   if(flag.equals("add")){
-	%> 
-	<script type="text/javascript">
-	
-	alert("商品上架成功");
-	</script>
-	<%  
-   }else if(flag.equals("del")){
-	%>   
-	 <script type="text/javascript">
-		alert("商品删除成功");
-	</script>
-	<%
-	}else if(flag.equals("update")){
-	%>
-	 <script type="text/javascript">
-		alert("商品更新成功");
-	</script>
-   <%
-   }
-   }
-   %>
-    
-<title>尤洪</title>
-</head>
-<body>  
-	<jsp:include page="memberTemp/Member_Top.jsp"></jsp:include>
+    <script type="text/javascript">
+    	jQuery(function(){
+    		jQuery(".m_left li a").removeClass("now");
+    		jQuery("#addProduct").addClass("now");
+    		init();
+    	});
+    	
+    	function init(){
+    		jQuery("#update").load("Product_Update.jsp?id=<%=id%>");
+    		
+    	}
+    </script>  
+  	
+  <body>
+    <jsp:include page="memberTemp/Member_Top.jsp"></jsp:include>
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right">
-		        	<!-- AJAX 局部刷新部分 -->
+			<div class="m_right" id="update">
 		        	
-		        	
-		        	
-		        	
+		            
 		    </div>
 	    </div>
 		<jsp:include page="memberTemp/Member_Footer.jsp"></jsp:include>
     </div>
-</body>
-
-
+  </body>
+</html>

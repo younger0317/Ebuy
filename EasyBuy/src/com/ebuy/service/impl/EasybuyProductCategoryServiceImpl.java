@@ -91,4 +91,15 @@ public class EasybuyProductCategoryServiceImpl implements
 		
 	}
 
+	/**
+	 * @author anwensheng
+	 * @version 1.0 2017 11 02
+	 * 通过名字查询id
+	 */
+	public int findIdByName(String name) {
+		int count=0;
+		count=epcd.getIdByName(name);
+		return count;
+	}
+
 }

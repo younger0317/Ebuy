@@ -89,7 +89,7 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 	//删除商品
 	public int delProduct(int id) {
 		int count=0;
-		String sql="delete easybuy_product where id=?";
+		String sql="delete from easybuy_product where id=?";
 		Object[] params={id};
 		count=super.executeUpdate(sql, params);
 		return count;
@@ -98,7 +98,7 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 	//修改商品
 	public int updatProduct(EasybuyProduct easybuyProduct) {
 		int count =0;
-		String sql="update easybuy_product set name=?,description=?,price=?,stock=?,categoryLevel1Id=?,categoryLevel2Id=?,categoryLevel3Id=?,fileName=? where id=? ";
+		String sql="update easybuy_product set `name`=?,description=?,price=?,stock=?,categoryLevel1Id=?,categoryLevel2Id=?,categoryLevel3Id=?,fileName=? where id=? ";
 		Object[] params={easybuyProduct.getName(),easybuyProduct.getDescription(),easybuyProduct.getPrice(),
 				easybuyProduct.getStock(),easybuyProduct.getCategoryLevel1Id(),easybuyProduct.getCategoryLevel2Id(),easybuyProduct.getCategoryLevel3Id(),
 				easybuyProduct.getFileName(),easybuyProduct.getId()};

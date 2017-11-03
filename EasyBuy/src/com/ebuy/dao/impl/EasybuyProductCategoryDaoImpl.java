@@ -119,5 +119,16 @@ public class EasybuyProductCategoryDaoImpl extends BaseDao<EasybuyProductCategor
 		
 		return null;
 	}
+	/*
+	 * @ anwensheng
+	 */
+	//通过名字查询id
+	public int getIdByName(String name) {
+		int count=0;
+		String sql="SELECT id FROM `easybuy_product_category` WHERE name=?";
+		Object[] params={name};
+		 count = super.executeQueryCount(sql, params);
+		return count;
+	}
 
 }

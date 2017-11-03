@@ -47,5 +47,10 @@ public interface EasybuyProductCategoryDao {
 	 * 通过名字查询分类
 	 */
 	EasybuyProductCategory getCategotyByName(EasybuyProductCategory epc);
-	
+	/**
+	 * @author anwensheng
+	 * @version 1.0 2017 11 02
+	 * 通过名字查询id
+	 */
+	public int getIdByName(String name);
 }
