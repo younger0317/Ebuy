@@ -93,6 +93,10 @@ public class UserServlet extends HttpServlet {
 				log.debug("登陆失败");
 				resp.sendRedirect("Login.html");
 			}
+		}else if(type.equals("exit")){
+			//退出功能
+			session.setAttribute("user", null);
+			resp.sendRedirect("index.jsp");
 		}
 		
 		if(type.equals("ajax")){
