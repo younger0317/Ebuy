@@ -1,5 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=	ozoa1sTyRVfCmCzO4GFS9oD038GNZnV1"></script>
+<script type="text/javascript">
+	//回调函数（result是结果）
+	function myFun(result){
+		var cityName = result.name;
+		jQuery("#city").html(cityName);
+		//alert("当前定位城市:"+cityName);
+	}
+	//创建获取当前城市的对象
+	var myCity = new BMap.LocalCity();
+	//获取当前城市的方法，myfun是回调函数
+	myCity.get(myFun);
+</script>
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
@@ -7,7 +20,7 @@
     	<span class="s_city_b">
         	<span class="fl">送货至：</span>
             <span class="s_city">
-            	<span>四川</span>
+            	<span id="city">四川</span>
                 <div class="s_city_bg">
                 	<div class="s_city_t"></div>
                     <div class="s_city_c">
@@ -31,7 +44,7 @@
                           </tr>
                           <tr>
                             <th>G</th>
-                            <td class="c_h"><span>广东</span><span>广西</span><span>贵州</span><span>甘肃</span></td>
+                            <td class="c_h" ><span class="c_check">广东</span><span>广西</span><span>贵州</span><span>甘肃</span></td>
                           </tr>
                           <tr>
                             <th>H</th>
@@ -55,7 +68,7 @@
                           </tr>
                           <tr>
                             <th>S</th>
-                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span class="c_check">四川</span><span>陕西</span></td>
+                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span >四川</span><span>陕西</span></td>
                           </tr>
                           <tr>
                             <th>T</th>
