@@ -58,26 +58,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="nav_t">全部商品分类</div>
             <div class="leftNav">
                 <ul>      
-                   <!--  <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
-                            <span class="fl">进口食品、生鲜</span>
-                        </div>
-                        <div class="zj">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="productShow?id=662">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>                               
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li> -->
                       <c:forEach items="${requestScope.tyep1}" var="t1">
 			           <li>
 			           		<div class="fj">
@@ -154,13 +134,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="news_t">
             	<span class="fr"><a href="Member_NewsList.jsp">更多 ></a></span>新闻资讯
             </div>
-            <ul>
+            <!-- <ul>
             	<li><span>[ 特惠 ]</span><a href="#">掬一轮明月 表无尽惦念</a></li>
             	<li><span>[ 公告 ]</span><a href="#">好奇金装成长裤新品上市</a></li>
             	<li><span>[ 特惠 ]</span><a href="#">大牌闪购 · 抢！</a></li>
             	<li><span>[ 公告 ]</span><a href="#">发福利 买车就抢千元油卡</a></li>
             	<li><span>[ 公告 ]</span><a href="#">家电低至五折</a></li>
-            </ul>
+            </ul> -->
+            	<c:forEach items="${requestScope.newsList }" var="news" varStatus="status">
+            		<li><a href="Member_NewsList.jsp?id=${news.id }">${news.title}</a></li>
+            	</c:forEach>
             <div class="charge_t">
             	话费充值<div class="ch_t_icon"></div>
             </div>

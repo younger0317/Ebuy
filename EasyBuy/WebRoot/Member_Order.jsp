@@ -1,6 +1,7 @@
 <%@page import="com.ebuy.entity.EasybuyOrderDetail"%>
 <%@page import="com.ebuy.entity.EasybuyOrder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
 String path = request.getContextPath();
@@ -39,9 +40,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="i_bg bg_color">
 		<div class="m_content">
 		<jsp:include page="memberTemp/Member_Left.jsp"></jsp:include>
-			<div class="m_right" id="info">
+			<c:choose>
+				<c:when test="${sessionScope.user.type == 1 }">
+					<!-- 管理员 -->
+					<div class="m_right" id="info">
 		    			            
-		    </div>
+		  			</div>
+				</c:when>
+				<c:otherwise>
+					<!-- 不是管理员  -->
+					<h3>你没有权限访问该页面</h3>
+				</c:otherwise>
+			</c:choose>
 	    </div>
 		<jsp:include page="memberTemp/Member_Footer.jsp"></jsp:include>
     </div>

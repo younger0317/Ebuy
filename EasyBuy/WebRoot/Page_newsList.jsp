@@ -5,8 +5,10 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <p></p>
-<div class="mem_tit">用户列表</div>
-<input type="button" value="添加资讯" onclick="toAddPage()"/>
+<div class="mem_tit">资讯列表</div>
+<c:if test="${sessionScope.user.type == 1 }">
+	<input type="button" value="添加资讯" onclick="toAddPage()"/>
+</c:if>
 <table id="UserList" border="1" cellspacing="0" align="center">
 	<tr align="center" height="30">
 		<td width="350px">文章标题</td>
