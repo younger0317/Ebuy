@@ -162,7 +162,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="${ctx}/Home?action=index"><img src="${ctx}/statics/images/logo.png"></a></div>
+    <div class="logo"><a href="index.jsp"><img src="images/logo.png"></a></div>
     <div class="search">
         <form>
             <input txype="text" value="" class="s_ipt">
@@ -182,30 +182,16 @@
         <div class="car_bg">
             <!--Begin 购物车未登录 Begin-->
             <c:if test="${sessionScope.user==null}">
-                <div class="un_login">还未登录！<a href="${ctx}/Login?action=toLogin" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+                <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             </c:if>
+            
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-                <c:if test="${sessionScope.cart2==null || sessionScope.cart2.items.size()<1}"> 您尚未购买任何物品，是否进入<a href="${ctx}/Home?action=index">商品页</a>进行购买！</c:if>
-                <c:if test="${sessionScope.cart2.items.size()>=1}">
-                    <li>
-                        <div class="img">
-                            <a href="javascript:void(0)">
-                                <img src="${ctx}/statics/images/car1.jpg" width="58" height="58">
-                            </a>
-                        </div>
-                        <div class="name">
-                            <a href="javascript:void(0)">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a>
-                        </div>
-                        <div class="price">
-                            <font color="#ff4e00">￥399</font>X1
-                        </div>
-                    </li>
-                </c:if>
+            <ul class="cars" id="cars">
+            	<jsp:include page="../Page_Car.jsp"></jsp:include>
             </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="javascript:void(0)">去购物车结算</a></div>
+            <!-- <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
+            <div class="price_a"><a href="javascript:void(0)">去购物车结算</a></div> -->
             <!--End 购物车已登录 End-->
         </div>
     </div>

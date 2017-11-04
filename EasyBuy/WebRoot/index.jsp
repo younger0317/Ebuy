@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--End Banner End-->
         <div class="inews">
         	<div class="news_t">
-            	<span class="fr"><a href="#">更多 ></a></span>新闻资讯
+            	<span class="fr"><a href="Member_NewsList.jsp">更多 ></a></span>新闻资讯
             </div>
             <ul>
             	<li><span>[ 特惠 ]</span><a href="#">掬一轮明月 表无尽惦念</a></li>
@@ -930,8 +930,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
     <!--End 猜你喜欢 End-->
-    <!--End footer End-->
     <jsp:include page="indexElement/indexFooter.jsp" ></jsp:include>
+    <!--End footer End-->
  </div>
 
 </body>
