@@ -88,6 +88,11 @@ public class UserServlet extends HttpServlet {
 			if(user != null){
 				log.debug(loginName+"登陆成功");
 				session.setAttribute("user", user);
+				if(user.getType()==1){
+					//管理员
+					resp.sendRedirect("Member_UserList.jsp");
+					return;
+				}
 				resp.sendRedirect("index.jsp");
 			}else{
 				log.debug("登陆失败");

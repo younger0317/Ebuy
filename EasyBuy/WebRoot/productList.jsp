@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
     	//初始化购物车
     	function init(id){
-    		jQuery("#cars").load("CarsServlet","id="+id);
+    		jQuery("#i_car").load("CarsServlet","id="+id);
     	}
     
     </script>

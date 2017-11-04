@@ -95,14 +95,18 @@ public class CarsServlet extends HttpServlet {
 		
 		
 		double totalCost = 0; //所有商品的价格
+		int totalNum = 0 ;//所有商品的数量
 		
 		Set<Integer> keySet = Pmap.keySet();
 		for (Integer key : keySet) {
 			EasybuyProduct easybuyProduct = Pmap.get(key);
 			totalCost +=easybuyProduct.getNum() * easybuyProduct.getPrice();
+			totalNum += easybuyProduct.getNum();
 		}
+		System.out.println(totalNum+" "+totalCost);
 		//把所有商品的总价格存储到session当中
 		session.setAttribute("totalCost", totalCost);
+		session.setAttribute("totalNum", totalNum);
 		//跳转页面
 		resp.sendRedirect("Page_Car.jsp");
 		

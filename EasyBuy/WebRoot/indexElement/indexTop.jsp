@@ -177,23 +177,10 @@
             <a href="javascript:void(0)">连衣裙</a>
         </span>
     </div>
-    <div class="i_car">
-        <div class="car_t">购物车 [ <span>3</span> ]</div>
-        <div class="car_bg">
-            <!--Begin 购物车未登录 Begin-->
-            <c:if test="${sessionScope.user==null}">
-                <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-            </c:if>
-            
-            <!--End 购物车未登录 End-->
-            <!--Begin 购物车已登录 Begin-->
-            <ul class="cars" id="cars">
+    <div class="i_car" id="i_car">
+     
             	<jsp:include page="../Page_Car.jsp"></jsp:include>
-            </ul>
-            <!-- <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="javascript:void(0)">去购物车结算</a></div> -->
-            <!--End 购物车已登录 End-->
-        </div>
+          
     </div>
 </div>
 <!--End Header End--> 
