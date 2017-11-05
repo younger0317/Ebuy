@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=	ozoa1sTyRVfCmCzO4GFS9oD038GNZnV1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ozoa1sTyRVfCmCzO4GFS9oD038GNZnV1"></script>
 <script type="text/javascript">
 	//回调函数（result是结果）
 	function myFun(result){

@@ -1,3 +1,10 @@
+<%@page import="com.ebuy.entity.EasybuyProductCategory"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,25 +15,33 @@
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
-    <![endif]-->
+    <![endif]-->    
+    <script type="text/javascript" src="js/jquery-1.11.1.min_044d0927.js"></script>
+	<script type="text/javascript" src="js/jquery.bxslider_e88acd1b.js"></script>
     
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>    
-                
-	<script type="text/javascript" src="js/n_nav.js"></script>   
+        
+	<script type="text/javascript" src="js/select.js"></script>
     
-    <script type="text/javascript" src="js/num.js">
-    	var jq = jQuery.noConflict();
-    </script>     
+	<script type="text/javascript" src="js/lrscroll.js"></script>
     
-    <script type="text/javascript" src="js/shade.js"></script>
+    <script type="text/javascript" src="js/iban.js"></script>
+    <script type="text/javascript" src="js/fban.js"></script>
+    <script type="text/javascript" src="js/f_ban.js"></script>
+    <script type="text/javascript" src="js/mban.js"></script>
+    <script type="text/javascript" src="js/bban.js"></script>
+    <script type="text/javascript" src="js/hban.js"></script>
+    <script type="text/javascript" src="js/tban.js"></script>
+    
+	<script type="text/javascript" src="js/lrscroll_1.js"></script>
     
 <title>尤洪</title>
 </head>
-<body>  
+<body>&nbsp;   
 <!--Begin Header Begin-->
 <jsp:include page="indexElement/indexTop.jsp" ></jsp:include>
-<!--End Header End--> 
+<!--End Header End  -->
 <!--Begin Menu Begin-->
 <div class="menu_bg">
 	<div class="menu">
@@ -305,78 +320,31 @@
             <td class="car_th" width="140">返还积分</td>
             <td class="car_th" width="150">操作</td>
           </tr>
-          <tr>
-            <td>
-            	<div class="c_s_img"><img src="images/c_1.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a onclick="ShowDiv('MyDiv','fade')">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr class="car_tr">
-            <td>
-            	<div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr>
-            <td>
-            	<div class="c_s_img"><img src="images/c_3.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr class="car_tr">
-            <td>
-            	<div class="c_s_img"><img src="images/c_4.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
+          <c:forEach items="${sessionScope.cars }" var="map">
+          	<tr>
+          		<td>
+            		<div class="c_s_img"><img src="images/c_1.jpg" width="73" height="73" /></div>
+                	${map.value.name}
+           		</td>
+          		<td align="center">${map.value.description}</td>
+          		<td align="center">
+	            	<div class="c_num">
+	                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
+	                	<input type="text" value="${map.value.num}" name="" class="car_ipt" />  
+	                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
+	                </div>
+	            </td>
+	            <td align="center" style="color:#ff4e00;">￥${map.value.price*map.value.num}</td>
+            	<td align="center">26R</td>
+           		<td align="center"><a onclick="ShowDiv('MyDiv','fade')">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
+          	</tr>
+          
+          </c:forEach>
+           </tr>
           <tr height="70">
           	<td colspan="6" style="font-family:'Microsoft YaHei'; border-bottom:0;">
             	<label class="r_rad"><input type="checkbox" name="clear" checked="checked" /></label><label class="r_txt">清空购物车</label>
-                <span class="fr">商品总价：<b style="font-size:22px; color:#ff4e00;">￥2899</b></span>
+                <span class="fr">商品总价：<b style="font-size:22px; color:#ff4e00;">￥${sessionScope.totalCost }</b></span>
             </td>
           </tr>
           <tr valign="top" height="150">
@@ -384,8 +352,8 @@
             	<a href="#"><img src="images/buy1.gif" /></a>&nbsp; &nbsp; <a href="#"><img src="images/buy2.gif" /></a>
             </td>
           </tr>
+         
         </table>
-        
     </div>
 	<!--End 第一步：查看购物车 End--> 
     
@@ -410,93 +378,11 @@
                     
             </div>
         </div>
-    </div>    
-    <!--End 弹出层-删除商品 End-->
-    
-    
-    <!--Begin Footer Begin -->
-    <div class="b_btm_bg bg_color">
-        <div class="b_btm">
-            <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="72"><img src="images/b1.png" width="62" height="62" /></td>
-                <td><h2>正品保障</h2>正品行货  放心购买</td>
-              </tr>
-            </table>
-			<table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="72"><img src="images/b2.png" width="62" height="62" /></td>
-                <td><h2>满38包邮</h2>满38包邮 免运费</td>
-              </tr>
-            </table>
-            <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="72"><img src="images/b3.png" width="62" height="62" /></td>
-                <td><h2>天天低价</h2>天天低价 畅选无忧</td>
-              </tr>
-            </table>
-            <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="72"><img src="images/b4.png" width="62" height="62" /></td>
-                <td><h2>准时送达</h2>收货时间由你做主</td>
-              </tr>
-            </table>
-        </div>
-    </div>
-    <div class="b_nav">
-    	<dl>                                                                                            
-        	<dt><a href="#">新手上路</a></dt>
-            <dd><a href="#">售后流程</a></dd>
-            <dd><a href="#">购物流程</a></dd>
-            <dd><a href="#">订购方式</a></dd>
-            <dd><a href="#">隐私声明</a></dd>
-            <dd><a href="#">推荐分享说明</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="#">配送与支付</a></dt>
-            <dd><a href="#">货到付款区域</a></dd>
-            <dd><a href="#">配送支付查询</a></dd>
-            <dd><a href="#">支付方式说明</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="#">会员中心</a></dt>
-            <dd><a href="#">资金管理</a></dd>
-            <dd><a href="#">我的收藏</a></dd>
-            <dd><a href="#">我的订单</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="#">服务保证</a></dt>
-            <dd><a href="#">退换货原则</a></dd>
-            <dd><a href="#">售后服务保证</a></dd>
-            <dd><a href="#">产品质量保证</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="#">联系我们</a></dt>
-            <dd><a href="#">网站故障报告</a></dd>
-            <dd><a href="#">购物咨询</a></dd>
-            <dd><a href="#">投诉与建议</a></dd>
-        </dl>
-        <div class="b_tel_bg">
-        	<a href="#" class="b_sh1">新浪微博</a>            
-        	<a href="#" class="b_sh2">腾讯微博</a>
-            <p>
-            服务热线：<br />
-            <span>400-123-4567</span>
-            </p>
-        </div>
-        <div class="b_er">
-            <div class="b_er_c"><img src="images/er.gif" width="118" height="118" /></div>
-            <img src="images/ss.png" />
-        </div>
-    </div>    
-    <div class="btmbg">
-		<div class="btm">
-        	备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
-            <img src="images/b_1.gif" width="98" height="33" /><img src="images/b_2.gif" width="98" height="33" /><img src="images/b_3.gif" width="98" height="33" /><img src="images/b_4.gif" width="98" height="33" /><img src="images/b_5.gif" width="98" height="33" /><img src="images/b_6.gif" width="98" height="33" />
-        </div>    	
-    </div>
-    <!--End Footer End -->    
-</div>
+    </div>  
+     <!--begin footer begin-->
+    <jsp:include page="indexElement/indexFooter.jsp" ></jsp:include>
+    <!--End footer End-->
+ </div>
 
 </body>
 
@@ -505,3 +391,6 @@
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
+
+
+

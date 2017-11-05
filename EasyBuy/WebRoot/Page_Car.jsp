@@ -29,7 +29,7 @@
 				
 				<c:if test="${sessionScope.user != null }">
 					<div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>${sessionScope.totalCost }</span></div>
-				    <div class="price_a"><a href="javascript:void(0)">去购物车结算</a></div>
+				    <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
 				</c:if>
 				<c:if test="${sessionScope.user == null}">
 					<div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><c:if test="${sessionScope.totalCost==null }">0</c:if>${sessionScope.totalCost }</span></div>
