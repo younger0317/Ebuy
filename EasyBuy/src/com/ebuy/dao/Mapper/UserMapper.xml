@@ -5,7 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.ebuy.dao.newdao.UserDao">
 	<select id="countUser" resultType="int">
+	<!-- 统计用户表总条目 -->
 		select count(1) from easybuy_user
 	</select>
+	
+	<select id="findUserByName" resultType="EasybuyUser">
+	<!-- 通过用户登陆名查找用户 -->
+		select * from easybuy_user where loginName = #{loginName}
+		<if test="password != null">and password = #{password}</if>
+	</select>
+	
+	
+	<insert id="addUser" parameterType="EasybuyUser">
+	<!-- 添加用户 -->
+		insert into easybuy_user(loginName,userName,sex,identityCode,password,email,mobile,type) 
+								values(#{loginName},#{userName},#{sex},#{identityCode},#{password},
+								#{email},#{mobile},#{type})
+	</insert>
+	
+	
 
 </mapper>

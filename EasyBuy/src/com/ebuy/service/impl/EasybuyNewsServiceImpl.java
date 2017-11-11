@@ -3,6 +3,8 @@ package com.ebuy.service.impl;
 import java.sql.Connection;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.ebuy.dao.EasybuyNewsDao;
 import com.ebuy.dao.EasybuyUserDao;
 import com.ebuy.dao.impl.EasybuyNewsDaoImpl;
@@ -12,6 +14,7 @@ import com.ebuy.entity.EasybuyUser;
 import com.ebuy.entity.Page;
 import com.ebuy.service.EasybuyNewsService;
 import com.ebuy.util.DatabaseUtil;
+import com.ebuy.util.MybatisUtil;
 /**
  * 
  * @author linbingyang
@@ -20,6 +23,8 @@ import com.ebuy.util.DatabaseUtil;
  *
  */
 public class EasybuyNewsServiceImpl implements EasybuyNewsService {
+	
+	private SqlSession sqlSession;
 	/**
 	 * 获取首页资讯
 	 */
@@ -29,6 +34,8 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 		Connection conn = DatabaseUtil.getConnection();
 		//创建对象
 		EasybuyNewsDao newsDao = new EasybuyNewsDaoImpl(conn);
+		
+		sqlSession = MybatisUtil.createSqlSession();
 		
 		//业务逻辑
 		List<EasybuyNews> list = null;

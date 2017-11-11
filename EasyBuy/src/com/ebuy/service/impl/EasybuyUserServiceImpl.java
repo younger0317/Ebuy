@@ -4,13 +4,17 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.ebuy.dao.EasybuyUserDao;
 import com.ebuy.dao.impl.EasybuyUserDaoImpl;
+import com.ebuy.dao.newdao.UserDao;
 import com.ebuy.entity.EasybuyUser;
 import com.ebuy.entity.Page;
 import com.ebuy.service.EasybuyUserService;
 import com.ebuy.servlet.UserServlet;
 import com.ebuy.util.DatabaseUtil;
+import com.ebuy.util.MybatisUtil;
 /**
  * 
  * @author linbingyang
@@ -19,15 +23,14 @@ import com.ebuy.util.DatabaseUtil;
  *
  */
 public class EasybuyUserServiceImpl implements EasybuyUserService {
-
+	private SqlSession sqlSession;
 	
 	/**
 	 * 通过用户名找用户
 	 */
 	@Override
-	public boolean findUserByLoginName(String loginName) {
-		boolean flag = false;
-		//获取数据库链接
+	public boolean findUserByLoginName(String loginName) {	
+	/*	//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -57,7 +60,22 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		}finally{
 			//关闭资源
 			DatabaseUtil.closeAll(conn, null, null);
+		}*/
+		boolean flag = false;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			EasybuyUser user = sqlSession.getMapper(UserDao.class).findUserByName(loginName,null);
+
+			if(user != null){
+				flag = true;
+			}
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}finally{
+			MybatisUtil.Close(sqlSession);
 		}
+		
 		return flag;
 	}
 	
@@ -66,8 +84,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	 */
 	@Override
 	public boolean registUser(EasybuyUser user) {
-		boolean flag = false;
-		//获取数据库链接
+/*		//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -79,6 +96,21 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		}
 		//关闭资源
 		DatabaseUtil.closeAll(conn, null, null);
+*/		
+		
+		boolean flag = false;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int addUser = sqlSession.getMapper(UserDao.class).addUser(user);
+			if(addUser>0){
+				flag = true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			MybatisUtil.Close(sqlSession);
+		}
 		return flag;
 	}
 	
@@ -87,8 +119,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	 */
 	@Override
 	public boolean addUser(EasybuyUser user) {
-		boolean flag = false;
-		//获取数据库链接
+/*		//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -100,6 +131,18 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		}
 		//关闭资源
 		DatabaseUtil.closeAll(conn, null, null);
+*/		
+		boolean flag = false;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int addUser = sqlSession.getMapper(UserDao.class).addUser(user);
+			if(addUser>0){
+				flag = true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return flag;
 	}
 	
@@ -109,7 +152,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	@Override
 	public EasybuyUser toLogin(String loginName, String password) {
 		EasybuyUser user = null;
-		//获取数据库链接
+		/*//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -119,9 +162,16 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		if(userList!=null && userList.size()>0){
 			user = userList.get(0);
 		}
-		
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			user = sqlSession.getMapper(UserDao.class).findUserByName(loginName, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return user;
 	}
 	
@@ -130,8 +180,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	 */
 	@Override
 	public int countUser() {
-		EasybuyUser user = null;
-		//获取数据库链接
+	/*	//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -139,7 +188,15 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		int totalCount=0;
 		totalCount = userDao.countUser();
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		int totalCount = 0;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			totalCount = sqlSession.getMapper(UserDao.class).countUser();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return totalCount;
 	}
 	
