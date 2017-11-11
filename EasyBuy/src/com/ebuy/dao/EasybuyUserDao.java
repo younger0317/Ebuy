@@ -12,6 +12,7 @@ import com.ebuy.entity.EasybuyUser;
  *
  */
 public interface EasybuyUserDao {
+	
 	/**
 	 * 用户查找方法
 	 * @param appendSql 添加查找条件
