@@ -2,6 +2,8 @@ package com.ebuy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ebuy.entity.EasybuyNews;
 
 /**
@@ -24,7 +26,7 @@ public interface EasybuyNewsDao {
 	 * @param id 新闻id
 	 * @return	更新行数
 	 */
-	public int delNews(int id);
+	public int delNews(@Param("id")int id);
 	
 	/**
 	 * 修改新闻

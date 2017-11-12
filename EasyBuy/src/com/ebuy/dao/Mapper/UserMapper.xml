@@ -23,6 +23,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 								#{email},#{mobile},#{type})
 	</insert>
 	
+	<select id="findUserById" resultType="EasybuyUser">
+	<!-- 通过用户id找到用户 -->
+		select * from easybuy_user where id = #{id}
+	</select>
+	
+	<update id="updateUser" parameterType="EasybuyUser">
+	<!-- 更新用户信息 -->
+		update easybuy_user 
+			<set>
+				<if test="loginName != null">loginName = #{loginName},</if>
+				<if test="userName != null">userName = #{userName},</if>
+				<if test="identityCode != null">identityCode = #{identityCode},</if>
+				<if test="email != null">email = #{email},</if>
+				<if test="mobile != null">mobile = #{mobile},</if>
+				<if test="type != null">type = #{type},</if>
+			</set>
+			where id = #{id}
+	</update>
+	
+	<delete id="delUserById">
+	<!-- 通过id，删除用户 -->
+		delete from easybuy_user where id = #{id}
+	</delete>
+	
+	<select id="findUserPageList" resultType="EasybuyUser">
+		select * from easybuy_user limit #{currentNo},#{pageSize}
+	</select>
+	
 	
 
 </mapper>

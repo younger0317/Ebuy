@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ebuy.dao.newdao.NewsDao">
+	<insert id="addNews" parameterType="EasybuyNews">
+		insert into easybuy_news easybuy_news(title,,createTime) values(#{title},#{content},#{createTime});
+	</insert>
+
+	<delete id="delNews">
+		delete from easybuy_news where id = #{id}
+	</delete>
+	
+	<update id="" parameterType="EasybuyNews">
+		update easybuy_news 
+		<set>
+			<if test="title != null">title = #{title}</if>
+			<if test="content != null">content = #{content}</if>
+			<if test="createTime != null">createTime = #{createTime}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<select id="getPageList" resultType="EasybuyNews">
+		select * from easybuy_news limit #{currentNo},#{pageSize}
+	</select>
+	
+	<select id="countNews" resultType="int">
+	<!-- 统计资讯表总条目 -->
+		select count(1) from easybuy_news
+	</select>
+	
+	<select id="findNewsById" resultType="EasybuyNews">
+		select * from easybuy_news where id = #{id}
+	</select>
+	
+</mapper>

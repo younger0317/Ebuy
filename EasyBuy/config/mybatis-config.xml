@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 将mapper文件加入到配置文件中 -->
 	<mappers>
 		<mapper resource="com/ebuy/dao/Mapper/UserMapper.xml"/>
+		<mapper resource="com/ebuy/dao/Mapper/NewsMapper.xml"/>
 	</mappers>
 
 

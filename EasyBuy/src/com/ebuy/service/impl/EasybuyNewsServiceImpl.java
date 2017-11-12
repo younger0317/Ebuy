@@ -9,6 +9,7 @@ import com.ebuy.dao.EasybuyNewsDao;
 import com.ebuy.dao.EasybuyUserDao;
 import com.ebuy.dao.impl.EasybuyNewsDaoImpl;
 import com.ebuy.dao.impl.EasybuyUserDaoImpl;
+import com.ebuy.dao.newdao.NewsDao;
 import com.ebuy.entity.EasybuyNews;
 import com.ebuy.entity.EasybuyUser;
 import com.ebuy.entity.Page;
@@ -30,20 +31,26 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 	 */
 	@Override
 	public List<EasybuyNews> getFiveNews() {
-		//获取链接
+	/*	//获取链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建对象
 		EasybuyNewsDao newsDao = new EasybuyNewsDaoImpl(conn);
-		
-		sqlSession = MybatisUtil.createSqlSession();
-		
 		//业务逻辑
 		List<EasybuyNews> list = null;
 		String sql = "order by createTime limit 5";
 		list = newsDao.getList(sql);
 		System.out.println(">>>>>>>获取的list"+list.size());
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		List<EasybuyNews> list = null;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			list = sqlSession.getMapper(NewsDao.class).getPageList(0, 5);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 	
@@ -53,7 +60,7 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 	@Override
 	public Page<EasybuyNews> findPageList(int currentNo, int pageSize) {
 		Page<EasybuyNews> page = new Page<EasybuyNews>();
-		//获取数据库链接
+		/*//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyNewsDao newsDao = new EasybuyNewsDaoImpl(conn);
@@ -63,14 +70,25 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 		List<EasybuyNews> pageList = newsDao.getList(sql, (currentNo-1)*pageSize,pageSize);
 		//获取总条数
 		int totalCount = newsDao.countNews();
-		//设置page参数
-		page.setCurrentNo(currentNo);
-		page.setPageSize(pageSize);
-		page.setTotalCount(totalCount);
-		page.setTotalPageCount(totalCount%pageSize == 0 ? totalCount/pageSize : totalCount/pageSize+1 );
-		page.setPageList(pageList);
+		
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int totalCount = sqlSession.getMapper(NewsDao.class).countNews();
+			List<EasybuyNews> pageList = sqlSession.getMapper(NewsDao.class).getPageList((currentNo-1)*pageSize, pageSize);
+			
+			//设置page参数
+			page.setCurrentNo(currentNo);
+			page.setPageSize(pageSize);
+			page.setTotalCount(totalCount);
+			page.setTotalPageCount(totalCount%pageSize == 0 ? totalCount/pageSize : totalCount/pageSize+1 );
+			page.setPageList(pageList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return page;
 	}
 	
@@ -80,7 +98,7 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 	@Override
 	public EasybuyNews findNewsById(int id) {
 		EasybuyNews news = null;
-		//获取链接
+	/*	//获取链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建对象
 		EasybuyNewsDao newsDao = new EasybuyNewsDaoImpl(conn);
@@ -91,7 +109,15 @@ public class EasybuyNewsServiceImpl implements EasybuyNewsService {
 			news = list.get(0);
 		}
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			news  = sqlSession.getMapper(NewsDao.class).findNewsById(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return news;
 	}
 

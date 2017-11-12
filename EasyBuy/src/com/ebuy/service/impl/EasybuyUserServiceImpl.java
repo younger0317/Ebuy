@@ -105,9 +105,10 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 			if(addUser>0){
 				flag = true;
 			}
+			sqlSession.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			sqlSession.rollback();
 		}finally{
 			MybatisUtil.Close(sqlSession);
 		}
@@ -139,9 +140,10 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 			if(addUser>0){
 				flag = true;
 			}
+			sqlSession.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			sqlSession.rollback();
 		}
 		return flag;
 	}
@@ -206,7 +208,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	@Override
 	public Page<EasybuyUser> findPageList(int currentNo, int pageSize) {
 		Page<EasybuyUser> page = new Page<EasybuyUser>();
-		//获取数据库链接
+		/*//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -217,13 +219,26 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		//获取总条数
 		int totalCount = userDao.countUser();
 		//设置page参数
-		page.setCurrentNo(currentNo);
-		page.setPageSize(pageSize);
-		page.setTotalCount(totalCount);
-		page.setTotalPageCount(totalCount%pageSize == 0 ? totalCount/pageSize : totalCount/pageSize+1 );
-		page.setPageList(pageList);
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int totalCount = sqlSession.getMapper(UserDao.class).countUser();
+			List<EasybuyUser> pageList = sqlSession.getMapper(UserDao.class).findUserPageList((currentNo-1)*pageSize, pageSize);
+			page.setCurrentNo(currentNo);
+			page.setPageSize(pageSize);
+			page.setTotalCount(totalCount);
+			page.setTotalPageCount(totalCount%pageSize == 0 ? totalCount/pageSize : totalCount/pageSize+1 );
+			page.setPageList(pageList);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		return page;
 	}
 	
@@ -233,7 +248,7 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	@Override
 	public EasybuyUser findUserById(int id) {
 		EasybuyUser user = null;
-		//获取数据库链接
+		/*//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
@@ -242,10 +257,17 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 		List<EasybuyUser> list = userDao.getEasybuyUserList(sql, id);
 		if(list != null && list.size()>0){
 			user = list.get(0);
+		}	
+		//关闭资源
+		DatabaseUtil.closeAll(conn, null, null);*/
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			user = sqlSession.getMapper(UserDao.class).findUserById(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
 		return user;
 	}
 	
@@ -254,11 +276,11 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	 */
 	@Override
 	public boolean modifyUser(EasybuyUser user) {
-		//获取数据库链接
+	/*	//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
-		boolean flag = false;
+		
 		//业务逻辑
 		String sql = "loginName=?,userName=?,identityCode=?,email=?,mobile=?,type=? where id=?";
 		int update = userDao.upDateUserInfo(sql, user.getLoginName(),user.getUserName(),user.getIdentityCode(),user.getEmail(),user.getMobile(),user.getType(),user.getId());
@@ -269,7 +291,21 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 			flag = false;
 		}
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		boolean flag = false;
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int updateUser = sqlSession.getMapper(UserDao.class).updateUser(user);
+			
+			if(updateUser>0){
+				flag = true;
+			}
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+		
 		return flag;
 	}
 	
@@ -278,19 +314,32 @@ public class EasybuyUserServiceImpl implements EasybuyUserService {
 	 */
 	@Override
 	public boolean delUserById(int id) {
-		//获取数据库链接
+		/*//获取数据库链接
 		Connection conn = DatabaseUtil.getConnection();
 		//创建Dao对象
 		EasybuyUserDao userDao = new EasybuyUserDaoImpl(conn);
-		boolean flag = false;
+		
 		//业务逻辑
 		int del = userDao.delUserById(id);
 		if(del>0){
 			flag = true;
 		}
-		
 		//关闭资源
-		DatabaseUtil.closeAll(conn, null, null);
+		DatabaseUtil.closeAll(conn, null, null);*/
+		boolean flag = false;
+		
+		try {
+			sqlSession = MybatisUtil.createSqlSession();
+			int delUser = sqlSession.getMapper(UserDao.class).delUserById(id);
+			if(delUser>0){
+				flag = true;
+			}
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}
+		
 		return flag;
 	}
 	
