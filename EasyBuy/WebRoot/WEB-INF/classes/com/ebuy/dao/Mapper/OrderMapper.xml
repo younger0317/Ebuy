@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.dao.newdao.OrderDao">
+	<resultMap type="EasybuyOrder" id="ebOrder">
+		<id property="id" column="id"/>
+		<result property="userId" column="userId"/> 
+		<result property="loginName" column="loginName"/> 
+		<result property="userAddress" column="userAddress"/> 
+		<result property="crateTime" column="crateTime"/> 
+		<result property="cost" column="cost"/> 
+		<result property="serialNumber" column="serialNumber"/> 
+		<collection property="easybuyOrderDetail" ofType="EasybuyOrderDetail" resultMap="ebOrderDetail"></collection>
+	</resultMap>
+	<resultMap type="EasybuyOrderDetail" id="ebOrderDetail">
+		<id property="id" column="d_id"/>
+		<result property="orderId" column="orderId"/>
+		<result property="productId" column="productId"/>
+		<result property="quantity" column="quantity"/>
+		<result property="cost" column="r_cost"/>
+		<association property="products" javaType="EasybuyProduct" resultMap="ebProduct"></association>
+	</resultMap>
+	<resultMap type="EasybuyProduct" id="ebProduct">
+		<id property="id" column="p_id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+
+
+
+	<!--查询订单所有信息  -->
+	<select id="getEasybuyOrdersList" resultMap="ebOrder">
+		select o.*,d.id d_id,d.orderId,d.productId,d.quantity,d.cost r_cost,p.id as p_id,p.name 
+		from easybuy_order o,easybuy_order_detail d,easybuy_product p
+		where o.id=d.orderId and d.productId=p.id
+	</select>
+</mapper>

@@ -30,17 +30,9 @@ public class MemberOrderServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
-		EasybuyOrderService eos=new EasybuyOrderServiceImpl();
-		EasybuyOrderDetailService eods=new EasybuyOrderDetailServiceImpl();
-		List<EasybuyOrder> eoList = eos.findEasybuyOrdersList();
-		Map<String, List<EasybuyOrderDetail>> map=new HashMap<String, List<EasybuyOrderDetail>>();
-		for (EasybuyOrder easybuyOrder : eoList) {
-			Integer id = easybuyOrder.getId();
-			List<EasybuyOrderDetail> eodList = eods.findEasybuyOrderDetailList(id);
-			map.put(id.toString(),eodList);
-		}
-		req.setAttribute("eoList", eoList);
-		req.setAttribute("map", map);
+		EasybuyOrderService Order = new EasybuyOrderServiceImpl();
+		List<EasybuyOrder> OrdersList = Order.findEasybuyOrdersList();
+		req.setAttribute("OrdersList", OrdersList);
 		req.setCharacterEncoding("utf-8");
 		req.getRequestDispatcher("Member_Order_List.jsp").forward(req, resp);
 	}

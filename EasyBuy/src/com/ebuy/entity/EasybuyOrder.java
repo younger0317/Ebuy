@@ -2,6 +2,7 @@ package com.ebuy.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -18,13 +19,21 @@ public class EasybuyOrder implements Serializable {
 	private Date crateTime;				//创建时间
 	private float cost;			    	//金额
 	private String serialNumber;		//订单号？
+	private List<EasybuyOrderDetail> easybuyOrderDetail;
 	//private int status;				//状态，1：待审核；2：通过审核；3：配货；4：已发货；5：已收货
 	//private int type;					//类型？
+	
 	
 	
 	//各属性get、set方法
 	public int getId() {
 		return id;
+	}
+	public List<EasybuyOrderDetail> getEasybuyOrderDetail() {
+		return easybuyOrderDetail;
+	}
+	public void setEasybuyOrderDetail(List<EasybuyOrderDetail> easybuyOrderDetail) {
+		this.easybuyOrderDetail = easybuyOrderDetail;
 	}
 	public void setId(int id) {
 		this.id = id;

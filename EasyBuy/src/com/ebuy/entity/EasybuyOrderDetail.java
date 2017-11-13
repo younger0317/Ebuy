@@ -1,6 +1,7 @@
 package com.ebuy.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 
@@ -16,7 +17,14 @@ public class EasybuyOrderDetail implements Serializable {
 	private int productId;		//商品ID
 	private int quantity;		//数量
 	private float cost;			//金额
+	private EasybuyProduct products;
 	
+	public EasybuyProduct getProducts() {
+		return products;
+	}
+	public void setProducts(EasybuyProduct products) {
+		this.products = products;
+	}
 	//各属性get、set方法
 	public int getId() {
 		return id;
