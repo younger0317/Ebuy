@@ -90,7 +90,7 @@ public class CategoryServlet extends HttpServlet {
 					ept.setParentId(0);
 					
 				}
-				System.out.println(ept.getName()+"/t"+ept.getParentId()+"/t"+ept.getType());
+				System.out.println(ept.getName()+"\t"+ept.getParentId()+"\t"+ept.getType());
 				int categoty = epcs.addCategoty(ept);
 				if(categoty==0){
 					out.print("<script type='text/javascript'>");

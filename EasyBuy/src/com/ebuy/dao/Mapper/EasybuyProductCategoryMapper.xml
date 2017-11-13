@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ebuy.dao.newdao.EasybuyProductCategoryMapperDao">
+	<select id="getType1IbAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category where type=1
+	</select>
+	<select id="getType2IbAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category where type=2
+	</select>
+	<select id="getType3IbAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category where type=3
+	</select>
+	<select id="countUser" resultType="int">
+		select count(1) from easybuy_product_category
+	</select>
+	<select id="getParentIdAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category where parentId=#{parentId}
+	</select>
+	<select id="getCategotyByPageAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category limit #{currentNo},#{pageSize}
+	</select>
+	
+	
+	<insert id="addCategoty" parameterType="EasybuyProductCategory">
+		INSERT INTO easybuy_product_category (name,parentId,type) values(#{name},#{parentId},#{type})
+	</insert>
+	<delete id="deleteCategoty" parameterType="int">
+		DELETE FROM easybuy_product_category where id=#{id}
+	</delete>
+	<select id="getCategotyByName" parameterType="EasybuyProductCategory" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category where name=#{name}
+	</select>
+	<select id="getIdByName" resultType="int">
+		SELECT id FROM `easybuy_product_category` WHERE name=#{name}
+	</select>
+	<select id="getAll" resultType="EasybuyProductCategory">
+		select * from easybuy_product_category
+	</select>
+
+
+
+
+
+
+
+</mapper>

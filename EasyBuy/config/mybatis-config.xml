@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -32,9 +33,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/ebuy/dao/Mapper/UserMapper.xml"/>
 		<mapper resource="com/ebuy/dao/Mapper/NewsMapper.xml"/>
+		<mapper resource="com/ebuy/dao/Mapper/EasybuyProductCategoryMapper.xml"/>
 		<mapper resource="com/ebuy/dao/Mapper/ProductMapper.xml"/>
 	</mappers>
 
 
 
 </configuration>
+
