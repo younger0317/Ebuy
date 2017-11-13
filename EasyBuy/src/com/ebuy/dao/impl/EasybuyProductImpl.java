@@ -145,6 +145,8 @@ public class EasybuyProductImpl extends BaseDao<EasybuyProduct> implements Easyb
 				
 				
 }
+
+	
 	
 
 }

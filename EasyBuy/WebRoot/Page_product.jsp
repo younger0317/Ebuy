@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 </table>
 <div align="center" style="font-size: 18px;margin-top: 10px;">
+
 	<a href="javascript:currentNo=1;redirect(currentNo)">首页</a> 
 	<c:if test="${requestScope.currentNo >1}">
 		<a href="javascript:currentNo=${requestScope.currentNo-1};redirect(currentNo)">上一页</a> 
@@ -40,5 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:currentNo=${requestScope.currentNo+1};redirect(currentNo)">下一页</a> 
 	</c:if>
 	<a href="javascript:currentNo=${requestScope.pageTotal};redirect(currentNo)">尾页</a>
+	<%-- <a href="product_servlet?currentNo=1">首页</a>
+	<a href="product_servlet?currentNo=${requestScope.currentNo-1}" >上一页</a>
+	<a href="product_servlet?currentNo=${requestScope.currentNo+1}">下一页</a>
+	<a href="product_servlet?currentNo=${requestScope.pageTotal}">尾页</a> --%>
 </div>
 </div>

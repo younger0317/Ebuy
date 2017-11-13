@@ -17,6 +17,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  */
 public class MybatisUtil {
 	
+	
 	private static SqlSessionFactory factory;
 	
 	static{
