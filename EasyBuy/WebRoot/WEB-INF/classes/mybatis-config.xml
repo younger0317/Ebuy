@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/ebuy/dao/Mapper/UserMapper.xml"/>
 		<mapper resource="com/ebuy/dao/Mapper/NewsMapper.xml"/>
+		<mapper resource="com/ebuy/dao/Mapper/ProductMapper.xml"/>
 	</mappers>
 
 

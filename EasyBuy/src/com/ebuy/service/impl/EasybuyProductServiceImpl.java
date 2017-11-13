@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.ebuy.dao.EasybuyProductDao;
 import com.ebuy.dao.impl.EasybuyProductImpl;
 import com.ebuy.entity.EasybuyProduct;
 import com.ebuy.service.EasybuyProductService;
 import com.ebuy.util.DatabaseUtil;
+import com.ebuy.util.MybatisUtil;
 /**
  * 
  * @author anwensheng
@@ -17,11 +20,28 @@ import com.ebuy.util.DatabaseUtil;
  */
 public class EasybuyProductServiceImpl implements EasybuyProductService {
 	
-	private Connection conn=null;//获取连接池对象
+	//private Connection conn=null;//获取连接池对象
 	 //获取商品信息实现类对象
 	@Override
 	public List<EasybuyProduct> findEasybuyProdouctsById(
-			Integer categoryLevelId,int currentNo,int pageSize) {
+		Integer categoryLevelId,int currentNo,int pageSize) {
+		
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		List<EasybuyProduct> productList = sqlSession.getMapper(EasybuyProductDao.class).getEasybuyProdouctsById(categoryLevelId, currentNo, pageSize);
+		MybatisUtil.Close(sqlSession);
+		return productList;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		conn=DatabaseUtil.getConnection();
 		List<EasybuyProduct> productList=null;
 		try {
@@ -49,12 +69,19 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 			
 		}
-		return productList;
+		return productList;*/
 	}
 	@Override
 	//查询商品总条数
 	public int findProductCount(Integer categoryLevelId) {
-		conn=DatabaseUtil.getConnection();
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		
+		
+		int count =sqlSession.getMapper(EasybuyProductDao.class).getProductCount(categoryLevelId);
+		MybatisUtil.Close(sqlSession);
+		return count;
+		
+	/*	conn=DatabaseUtil.getConnection();
 		int count=0;
 		
 		try {
@@ -78,11 +105,19 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 		}
 		
-		return count;
+		return count;*/
 	}
 	//产品增加业务实现类
 	public int addProduct(EasybuyProduct easybuyProduct) {
-		conn=DatabaseUtil.getConnection();
+		
+SqlSession sqlSession = MybatisUtil.createSqlSession();
+		
+		
+		int count =sqlSession.getMapper(EasybuyProductDao.class).addProduct(easybuyProduct);
+		sqlSession.commit();
+		MybatisUtil.Close(sqlSession);
+		return count;
+		/*conn=DatabaseUtil.getConnection();
 		int count=0;
 		try {
 			//关闭自动提交事物
@@ -108,12 +143,11 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 		}finally{
 			DatabaseUtil.closeAll(conn, null, null);
 			
-		}
-		return count;
+		}*/
 	}
 	//产品删除业务实现类
 	public int delProduct(int id) {
-		conn=DatabaseUtil.getConnection();
+		/*conn=DatabaseUtil.getConnection();
 		int count=0;
 		try {
 			//关闭自动提交事物
@@ -139,12 +173,27 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 		}finally{
 			DatabaseUtil.closeAll(conn, null, null);
 			
-		}
+		}*/
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		
+		
+		int count =sqlSession.getMapper(EasybuyProductDao.class).delProduct(id);
+		sqlSession.commit();
+		MybatisUtil.Close(sqlSession);
 		return count;
 	}
 	//产品更新修改业务实现类
 	public int updatProduct(EasybuyProduct easybuyProduct) {
-		conn=DatabaseUtil.getConnection();
+		
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		
+		int count =sqlSession.getMapper(EasybuyProductDao.class).updatProduct(easybuyProduct);
+		sqlSession.commit();
+		MybatisUtil.Close(sqlSession);
+		return count;
+		
+		
+	/*	conn=DatabaseUtil.getConnection();
 		int count=0;
 		try {
 			//关闭自动提交事物
@@ -171,11 +220,16 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 			
 		}
-		return count;
+		return count;*/
 	}
 	//产品列表查询业务实现类
 	public List<EasybuyProduct> findProductList(int currentNo,int pageSize) {
-		conn=DatabaseUtil.getConnection();
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		int sum=(currentNo-1)*pageSize;
+		 List<EasybuyProduct> productList2 = sqlSession.getMapper(EasybuyProductDao.class).getProductList(sum, pageSize);
+		MybatisUtil.Close(sqlSession);
+		return productList2;
+		/*conn=DatabaseUtil.getConnection();
 		List<EasybuyProduct> productList=null;
 		try {
 			//关闭自动提交事物
@@ -202,11 +256,19 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 			
 		}
-		return productList;
+		return productList;*/
 	}
 	//产品总数量查询业务实现类
 	public int findProductTotal() {
-		conn=DatabaseUtil.getConnection();
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		int total = sqlSession.getMapper(EasybuyProductDao.class).getProductTotal();
+		MybatisUtil.Close(sqlSession);
+		return total;
+		
+		
+		
+		
+	/*	conn=DatabaseUtil.getConnection();
 		int count=0;
 		
 		try {
@@ -230,13 +292,19 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 		}
 		
-		return count;
+		return count;*/
 	}
 	
 	
 	//根据商品id查询商品信息
 	public EasybuyProduct findProductById(int id) {
-		conn=DatabaseUtil.getConnection();
+		SqlSession sqlSession = MybatisUtil.createSqlSession();
+		EasybuyProduct product = sqlSession.getMapper(EasybuyProductDao.class).getProductById(id);
+		MybatisUtil.Close(sqlSession);
+		return product;
+		
+		
+	/*	conn=DatabaseUtil.getConnection();
 		EasybuyProduct ebp=new EasybuyProduct();
 		try {
 			//关闭自动提交事物
@@ -262,7 +330,7 @@ public class EasybuyProductServiceImpl implements EasybuyProductService {
 			DatabaseUtil.closeAll(conn, null, null);
 		}
 		
-		return ebp;
+		return ebp;*/
 	}
 	
 
